@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Page not found — Ons Nest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#25475A">
+<link rel="icon" href="/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icons/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
+<style>
+  :root{
+    --sand:#F5F0E4;
+    --paper:#FFFDF9;
+    --ink:#232A2E;
+    --ink-soft:#4C565C;
+    --line:#DDD2BC;
+    --sea:#3C6B82;
+    --sea-deep:#284A5C;
+    --roof:#9A5238;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --sand:#141C22;
+      --paper:#1B242A;
+      --ink:#EDE7DA;
+      --ink-soft:#B7C1C6;
+      --line:#33414A;
+      --sea:#7FB3CC;
+      --sea-deep:#9FCBDF;
+      --roof:#D48A6C;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    background:var(--sand);
+    color:var(--ink);
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:8vh 6vw;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sans{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;}
+  .wrap{max-width:480px; text-align:center;}
+  .mark{width:64px; height:64px; margin:0 auto 28px; display:block;}
+  .kicker{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.74rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--sea);
+    margin-bottom:14px;
+  }
+  h1{
+    font-size:clamp(1.9rem, 4vw, 2.5rem);
+    line-height:1.15;
+    margin:0 0 16px;
+    text-wrap:balance;
+  }
+  p.lede{
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    margin:0 0 34px;
+  }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom:36px;}
+  .btn{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 24px;
+    border-radius:2px;
+    font-size:0.9rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    text-decoration:none;
+    border:1px solid transparent;
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--sea-deep); color:var(--sand); box-shadow:0 14px 30px -16px rgba(35,42,46,0.4);}
+  .btn-ghost{background:transparent; border-color:var(--ink); color:var(--ink);}
+  .langs{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+    padding-top:20px;
+  }
+  .langs a{
+    color:var(--ink-soft);
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+    text-underline-offset:3px;
+    margin:0 6px;
+  }
+  .langs a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <svg class="mark" viewBox="0 0 512 512" aria-hidden="true">
+      <rect x="20" y="20" width="472" height="472" rx="112" fill="#25475A"/>
+      <path d="M 100 264 A 156 156 0 0 0 412 264 L 356 264 A 100 100 0 0 1 156 264 Z" fill="#F5F0E4"/>
+      <ellipse cx="256" cy="220" rx="61" ry="74" fill="#9A5238"/>
+    </svg>
+    <span class="kicker">Ons Nest</span>
+    <h1>This page has flown the nest.</h1>
+    <p class="lede">We couldn't find the page you were looking for. It may have moved, or never existed at all.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary sans" href="/">Back to Ons Nest</a>
+      <a class="btn btn-ghost sans" href="https://myrent.interhome.com/en/BE8420.355.1/" target="_blank" rel="noopener">Check dates &amp; book</a>
+    </div>
+    <div class="langs">
+      <a href="/">Nederlands</a>·<a href="/en/">English</a>·<a href="/fr/">Français</a>·<a href="/de/">Deutsch</a>
+    </div>
+  </div>
+</body>
+</html>
