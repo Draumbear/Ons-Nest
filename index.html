@@ -32,9 +32,16 @@
   "inLanguage": "nl",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Orteliuslaan 8",
+    "postalCode": "8420",
     "addressLocality": "De Haan",
     "addressRegion": "West Flanders",
     "addressCountry": "BE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.2757,
+    "longitude": 3.0346
   },
   "amenityFeature": [
     {"@type": "LocationFeatureSpecification", "name": "Wi-Fi"},
@@ -159,13 +166,21 @@
     color:var(--ink-soft);
     margin-left:8px;
   }
+  /* desktop: the hamburger wrapper disappears from layout so nav-links sits directly
+     in the nav row, exactly as if the <details> wrapper weren't there */
+  .nav-hamburger{
+    flex:1 1 auto;
+    display:block;
+    min-width:0;
+  }
+  .nav-hamburger summary{display:none;}
   .nav-links{
     display:flex;
     gap:30px;
     overflow-x:auto;
     scrollbar-width:none;
-    flex:1 1 auto;
     justify-content:center;
+    width:100%;
   }
   .nav-links::-webkit-scrollbar{display:none;}
   .nav-links a{
@@ -233,6 +248,10 @@
     transition:transform .15s ease;
   }
   .lang-switch[open] summary .chev{transform:rotate(180deg);}
+  /* explicit open-state gating: don't rely on the browser's default <details> collapse
+     behaviour, which some engines don't reliably enforce once the content has its own
+     non-"none" display value set by author CSS */
+  .lang-switch:not([open]) .lang-menu{display:none;}
   .lang-menu{
     position:absolute;
     top:calc(100% + 8px);
@@ -757,17 +776,59 @@
     .facility-grid{grid-template-columns:repeat(2,1fr);}
     .amen-wrap{grid-template-columns:1fr;}
     .loc{grid-template-columns:1fr;}
-    .nav-inner{flex-wrap:wrap; row-gap:10px;}
+    .nav-inner{gap:8px;}
+    .nav-book{padding:8px 12px; font-size:0.7rem;}
     .nav-brand{order:1;}
-    .lang-switch{order:2;}
-    .nav-book{order:3;}
-    .nav-links{
-      order:4;
-      flex-basis:100%;
-      justify-content:flex-start;
-      padding-top:10px;
-      border-top:1px solid var(--line);
+    .nav-hamburger{
+      display:inline-block;
+      position:relative;
+      order:2;
+      flex:0 0 auto;
     }
+    .nav-hamburger summary{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:38px;
+      height:38px;
+      border:1px solid var(--line);
+      border-radius:3px;
+      cursor:pointer;
+      color:var(--ink-soft);
+      list-style:none;
+    }
+    .nav-hamburger summary::-webkit-details-marker{display:none;}
+    .nav-hamburger summary:hover{color:var(--ink); border-color:var(--sea);}
+    .nav-hamburger summary:focus-visible{outline:2px solid var(--sea); outline-offset:2px;}
+    .nav-hamburger summary svg{
+      width:18px;height:18px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+    }
+    .lang-switch{order:3;}
+    .nav-book{order:4;}
+    .nav-hamburger:not([open]) .nav-links{display:none;}
+    .nav-links{
+      position:absolute;
+      top:calc(100% + 8px);
+      left:0;
+      display:flex;
+      flex-direction:column;
+      gap:1px;
+      overflow:visible;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:5px;
+      box-shadow:0 16px 34px -14px rgba(20,28,34,0.3);
+      padding:5px;
+      min-width:180px;
+      z-index:60;
+    }
+    .nav-links a{padding:9px 12px; border-radius:3px;}
+    .nav-links a::after{display:none;}
+    .nav-links a:hover, .nav-links a.active{background:var(--sand-deep); color:var(--ink);}
     footer{flex-direction:column; align-items:flex-start;}
   }
 
@@ -790,12 +851,17 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner wrap">
     <a class="nav-brand" href="#top" id="navBrand">Ons Nest<span class="eyebrow" data-i18n="eyebrow_holiday_home">Vakantiehuis</span></a>
-    <div class="nav-links sans" id="navLinks">
-      <a href="#story" data-nav="story" data-i18n="nav_story">Verhaal</a>
-      <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Huis</a>
-      <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Voorzieningen</a>
-      <a href="#location" data-nav="location" data-i18n="nav_location">Ligging</a>
-    </div>
+    <details class="nav-hamburger" id="navHamburger">
+      <summary aria-label="Menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </summary>
+      <div class="nav-links sans" id="navLinks">
+        <a href="#story" data-nav="story" data-i18n="nav_story">Verhaal</a>
+        <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Huis</a>
+        <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Voorzieningen</a>
+        <a href="#location" data-nav="location" data-i18n="nav_location">Ligging</a>
+      </div>
+    </details>
     <details class="lang-switch sans"><summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.5 3 14.5 0 18c-3-3.5-3-14.5 0-18z"/></svg><span class="label">NL</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><span class="current">Nederlands <span class="code">NL</span></span><a href="https://draumbear.github.io/Ons-Nest/fr/">Français <span class="code">FR</span></a><a href="https://draumbear.github.io/Ons-Nest/de/">Deutsch <span class="code">DE</span></a><a href="https://draumbear.github.io/Ons-Nest/en/">English <span class="code">EN</span></a></div></details>
     <a class="btn btn-primary sans nav-book interhome-link" href="https://myrent.interhome.com/nl/BE8420.355.1/" target="_blank" rel="noopener" data-i18n="nav_book">Boek nu</a>
   </div>
@@ -935,13 +1001,13 @@
       </div>
     </div>
     <div class="map-embed reveal">
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=3.022%2C51.2675%2C3.040%2C51.2785&amp;layer=mapnik&amp;marker=51.273%2C3.031" loading="lazy" title="Approximate location of Ons Nest in the concessiewijk of De Haan" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=3.0296%2C51.2737%2C3.0396%2C51.2777&amp;layer=mapnik&amp;marker=51.2757%2C3.0346" loading="lazy" title="Ons Nest, Orteliuslaan 8, De Haan" referrerpolicy="no-referrer-when-downgrade"></iframe>
       <div class="map-foot">
         <div>
-          <span class="map-label sans" data-i18n="location_map_caption">Globale ligging</span>
-          <p class="map-note sans" data-i18n="location_map_note">Dit toont de buurt in het algemeen, niet het exacte adres &mdash; dat krijg je na je boeking.</p>
+          <span class="map-label sans" data-i18n="location_map_caption">Adres</span>
+          <p class="map-note sans" data-i18n="location_map_note">Orteliuslaan 8, 8420 De Haan, België</p>
         </div>
-        <a class="map-link sans" href="https://www.openstreetmap.org/?mlat=51.273&amp;mlon=3.031#map=15/51.273/3.031" target="_blank" rel="noopener" data-i18n="location_map_link">Bekijk grotere kaart</a>
+        <a class="map-link sans" href="https://www.openstreetmap.org/?mlat=51.2757&amp;mlon=3.0346#map=17/51.2757/3.0346" target="_blank" rel="noopener" data-i18n="location_map_link">Bekijk grotere kaart</a>
       </div>
     </div>
     <div class="loc reveal">
@@ -1062,15 +1128,24 @@
     });
   }
 
-  /* language dropdown: close on outside click or Escape */
-  var langDetails = document.querySelector(".lang-switch");
-  if(langDetails){
+  /* dropdown menus (language switcher, mobile hamburger): close on outside click, Escape, or link click */
+  var dropdowns = Array.prototype.slice.call(document.querySelectorAll(".lang-switch, .nav-hamburger"));
+  if(dropdowns.length){
     document.addEventListener("click", function(e){
-      if(langDetails.open && !langDetails.contains(e.target)) langDetails.open = false;
+      dropdowns.forEach(function(d){
+        if(d.open && !d.contains(e.target)) d.open = false;
+      });
     });
     document.addEventListener("keydown", function(e){
-      if(e.key === "Escape" && langDetails.open) langDetails.open = false;
+      if(e.key !== "Escape") return;
+      dropdowns.forEach(function(d){ if(d.open) d.open = false; });
     });
+    var navHamburger = document.getElementById("navHamburger");
+    if(navHamburger){
+      navHamburger.querySelectorAll("a").forEach(function(a){
+        a.addEventListener("click", function(){ navHamburger.open = false; });
+      });
+    }
   }
 
   /* scroll progress bar */
