@@ -63,13 +63,13 @@
       <p class="hp"><label>Leave this field empty: <input name="bot-field"></label></p>
 
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" required maxlength="100">
 
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" required maxlength="254">
 
       <label for="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
+      <textarea id="message" name="message" required maxlength="2000"></textarea>
 
       <button type="submit">Send message</button>
     </form>

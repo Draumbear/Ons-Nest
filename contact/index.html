@@ -63,13 +63,13 @@
       <p class="hp"><label>Laat dit veld leeg: <input name="bot-field"></label></p>
 
       <label for="name">Naam</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" required maxlength="100">
 
       <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" required maxlength="254">
 
       <label for="message">Bericht</label>
-      <textarea id="message" name="message" required></textarea>
+      <textarea id="message" name="message" required maxlength="2000"></textarea>
 
       <button type="submit">Bericht versturen</button>
     </form>
