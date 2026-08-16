@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://ons-nest.be/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/"/>
+  </url>
+  <url>
+    <loc>https://ons-nest.be/en/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/"/>
+  </url>
+  <url>
+    <loc>https://ons-nest.be/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/"/>
+  </url>
+  <url>
+    <loc>https://ons-nest.be/de/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/"/>
+  </url>
+
+  <url><loc>https://ons-nest.be/privacy/</loc></url>
+  <url><loc>https://ons-nest.be/en/privacy/</loc></url>
+  <url><loc>https://ons-nest.be/fr/privacy/</loc></url>
+  <url><loc>https://ons-nest.be/de/privacy/</loc></url>
+
+  <url><loc>https://ons-nest.be/contact/</loc></url>
+  <url><loc>https://ons-nest.be/en/contact/</loc></url>
+  <url><loc>https://ons-nest.be/fr/contact/</loc></url>
+  <url><loc>https://ons-nest.be/de/contact/</loc></url>
+
+</urlset>
