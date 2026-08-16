@@ -629,6 +629,64 @@
     color:var(--ink-soft);
     margin-bottom:5px;
   }
+  /* ---------- map ---------- */
+  .map-embed{
+    margin-bottom:28px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    background:var(--paper);
+  }
+  .map-embed iframe{
+    display:block;
+    width:100%;
+    height:300px;
+    border:0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .map-embed iframe{filter:invert(92%) hue-rotate(180deg) brightness(0.92) contrast(88%);}
+  }
+  :root[data-theme="dark"] .map-embed iframe{filter:invert(92%) hue-rotate(180deg) brightness(0.92) contrast(88%);}
+  .map-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    padding:14px 18px;
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+  .map-label{
+    display:block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.7rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--sea);
+    margin-bottom:4px;
+  }
+  .map-note{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .map-link{
+    flex:0 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+    text-underline-offset:3px;
+    white-space:nowrap;
+    padding-top:2px;
+  }
+  .map-link:hover{color:var(--ink);}
+  .map-link:focus-visible{outline:2px solid var(--sea); outline-offset:2px;}
+
   .rules{
     background:var(--sand-deep);
     border:1px solid var(--line);
@@ -775,7 +833,7 @@
     <div class="story reveal">
       <blockquote data-i18n="story_quote">&laquo;&nbsp;Une belle maison de caract&egrave;re, en plein centre-ville.&nbsp;&raquo;</blockquote>
       <div class="body">
-        <p data-i18n="story_p1">Ons Nest occupe sa propre aile d'une maison construite en 1935, dans une rue calme de De Haan. Les r&egrave;gles de hauteur des b&acirc;timents et la protection des dunes ont maintenu la ville basse, et &ccedil;a se sent encore aujourd'hui. Cette aile a sa propre entr&eacute;e, s&eacute;par&eacute;e du reste du b&acirc;timent. &Agrave; l'arri&egrave;re se trouve une terrasse ensoleill&eacute;e, abrit&eacute;e par une haie et un vieux mur de briques, le genre d'endroit o&ugrave; le petit-d&eacute;jeuner se transforme en d&eacute;jeuner sans qu'on s'en rende compte.</p>
+        <p data-i18n="story_p1">Ons Nest occupe sa propre aile d'une maison construite en 1935, dans la concessiewijk de De Haan, le quartier protégé aux villas Belle Époque et aux rues calmes et arborées. Les règles de hauteur des bâtiments et la protection des dunes ont maintenu la ville basse, et ça se sent encore aujourd'hui. Cette aile a sa propre entrée, séparée du reste du bâtiment. À l'arrière se trouve une terrasse ensoleillée, abritée par une haie et un vieux mur de briques, le genre d'endroit où le petit-déjeuner se transforme en déjeuner sans qu'on s'en rende compte.</p>
         <p data-i18n="story_p2">Au rez-de-chauss&eacute;e, une cuisine familiale avec une grande table pour toute la famille et un double salon fait pour les soir&eacute;es tranquilles. &Agrave; l'&eacute;tage, trois chambres, l'une avec sa propre salle de bain, l'autre avec des lits superpos&eacute;s pour les petits-enfants, plus une deuxi&egrave;me salle de bain compl&egrave;te pour &eacute;viter la file avant d'aller &agrave; la plage.</p>
       </div>
     </div>
@@ -873,6 +931,16 @@
       <div>
         <span class="kicker-small sans" data-i18n="location_kicker">Aux alentours</span>
         <h2 data-i18n="location_h2">Distances depuis la maison.</h2>
+      </div>
+    </div>
+    <div class="map-embed reveal">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=2.98%2C51.245%2C3.09%2C51.295&amp;layer=mapnik&amp;marker=51.2705%2C3.0335" loading="lazy" title="Approximate location of Ons Nest in De Haan aan Zee" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-foot">
+        <div>
+          <span class="map-label sans" data-i18n="location_map_caption">Localisation approximative</span>
+          <p class="map-note sans" data-i18n="location_map_note">Ceci montre le quartier en général, pas l'adresse exacte &mdash; communiquée après la réservation.</p>
+        </div>
+        <a class="map-link sans" href="https://www.openstreetmap.org/?mlat=51.2705&amp;mlon=3.0335#map=15/51.2705/3.0335" target="_blank" rel="noopener" data-i18n="location_map_link">Voir la carte en grand</a>
       </div>
     </div>
     <div class="loc reveal">

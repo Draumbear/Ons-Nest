@@ -629,6 +629,64 @@
     color:var(--ink-soft);
     margin-bottom:5px;
   }
+  /* ---------- map ---------- */
+  .map-embed{
+    margin-bottom:28px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    background:var(--paper);
+  }
+  .map-embed iframe{
+    display:block;
+    width:100%;
+    height:300px;
+    border:0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .map-embed iframe{filter:invert(92%) hue-rotate(180deg) brightness(0.92) contrast(88%);}
+  }
+  :root[data-theme="dark"] .map-embed iframe{filter:invert(92%) hue-rotate(180deg) brightness(0.92) contrast(88%);}
+  .map-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    padding:14px 18px;
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+  .map-label{
+    display:block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.7rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--sea);
+    margin-bottom:4px;
+  }
+  .map-note{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .map-link{
+    flex:0 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+    text-underline-offset:3px;
+    white-space:nowrap;
+    padding-top:2px;
+  }
+  .map-link:hover{color:var(--ink);}
+  .map-link:focus-visible{outline:2px solid var(--sea); outline-offset:2px;}
+
   .rules{
     background:var(--sand-deep);
     border:1px solid var(--line);
@@ -775,7 +833,7 @@
     <div class="story reveal">
       <blockquote data-i18n="story_quote">&bdquo;Ein sch&ouml;nes, geschichtstr&auml;chtiges Haus, mitten im Zentrum.&ldquo;</blockquote>
       <div class="body">
-        <p data-i18n="story_p1">Ons Nest nimmt einen eigenen Fl&uuml;gel eines Hauses aus dem Jahr 1935 ein, in einer ruhigen Stra&szlig;e in De Haan. Strenge Bauh&ouml;henregeln und der Schutz der D&uuml;nen hielten den Ort niedrig, und das sp&uuml;rt man bis heute. Der Fl&uuml;gel hat einen eigenen Eingang, getrennt vom Rest des Hauses. Hinten liegt eine sonnige Terrasse hinter einer Hecke und einer alten Backsteinmauer, die Art von Ort, an dem aus dem Fr&uuml;hst&uuml;ck ganz von selbst ein Mittagessen wird.</p>
+        <p data-i18n="story_p1">Ons Nest nimmt einen eigenen Flügel eines Hauses aus dem Jahr 1935 ein, in der Concessiewijk von De Haan, dem geschützten Viertel mit Belle-Époque-Villen und ruhigen, grünen Straßen. Strenge Bauhöhenregeln und der Schutz der Dünen hielten den Ort niedrig, und das spürt man bis heute. Der Flügel hat einen eigenen Eingang, getrennt vom Rest des Hauses. Hinten liegt eine sonnige Terrasse hinter einer Hecke und einer alten Backsteinmauer, die Art von Ort, an dem aus dem Frühstück ganz von selbst ein Mittagessen wird.</p>
         <p data-i18n="story_p2">Unten liegen eine l&auml;ndliche K&uuml;che mit langem Tisch f&uuml;r die ganze Familie und ein doppeltes Wohnzimmer f&uuml;r ruhige Abende. Oben liegen drei Schlafzimmer, eines mit eigenem Bad, eines mit Platz f&uuml;r die Stockbetten der Enkelkinder, dazu ein zweites, vollst&auml;ndiges Badezimmer, damit vor dem Strand niemand warten muss.</p>
       </div>
     </div>
@@ -873,6 +931,16 @@
       <div>
         <span class="kicker-small sans" data-i18n="location_kicker">Umgebung</span>
         <h2 data-i18n="location_h2">Entfernungen vom Haus.</h2>
+      </div>
+    </div>
+    <div class="map-embed reveal">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=2.98%2C51.245%2C3.09%2C51.295&amp;layer=mapnik&amp;marker=51.2705%2C3.0335" loading="lazy" title="Approximate location of Ons Nest in De Haan aan Zee" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-foot">
+        <div>
+          <span class="map-label sans" data-i18n="location_map_caption">Ungefähre Lage</span>
+          <p class="map-note sans" data-i18n="location_map_note">Das zeigt die Umgebung im Allgemeinen, nicht die genaue Adresse &mdash; die erhalten Sie nach der Buchung.</p>
+        </div>
+        <a class="map-link sans" href="https://www.openstreetmap.org/?mlat=51.2705&amp;mlon=3.0335#map=15/51.2705/3.0335" target="_blank" rel="noopener" data-i18n="location_map_link">Größere Karte ansehen</a>
       </div>
     </div>
     <div class="loc reveal">
