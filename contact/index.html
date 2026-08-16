@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contact — Ons Nest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#25475A">
+<link rel="icon" href="/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icons/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
+<style>
+  :root{
+    --sand:#F5F0E4; --paper:#FFFDF9; --ink:#232A2E; --ink-soft:#4C565C;
+    --line:#DDD2BC; --sea:#3C6B82; --sea-deep:#284A5C; --roof:#9A5238;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --sand:#141C22; --paper:#1B242A; --ink:#EDE7DA; --ink-soft:#B7C1C6; --line:#33414A; --sea:#7FB3CC; --sea-deep:#9FCBDF; --roof:#D48A6C; }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--sand); color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding: 8vh 6vw 10vh;
+  }
+  .serif{font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;}
+  .wrap{max-width:520px; margin:0 auto;}
+  a.back{color:var(--ink-soft); text-decoration:none; font-size:0.82rem; display:inline-block; margin-bottom:28px;}
+  a.back:hover{color:var(--ink);}
+  .kicker{display:block; font-size:0.74rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); margin-bottom:12px;}
+  h1{font-size:clamp(1.7rem, 3.4vw, 2.2rem); margin:0 0 12px; text-wrap:balance;}
+  p.lede{color:var(--ink-soft); font-size:1rem; margin:0 0 32px; max-width:44ch;}
+  label{display:block; font-size:0.82rem; font-weight:600; color:var(--ink-soft); margin-bottom:6px;}
+  input[type="text"], input[type="email"], textarea{
+    width:100%; padding:11px 14px; font-size:0.96rem; font-family:inherit;
+    border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink);
+    margin-bottom:20px;
+  }
+  textarea{min-height:130px; resize:vertical;}
+  input:focus, textarea:focus{outline:2px solid var(--sea); outline-offset:1px;}
+  button{
+    font-family:inherit; padding:13px 26px; font-size:0.92rem; font-weight:600;
+    border:0; border-radius:2px; background:var(--sea-deep); color:var(--sand); cursor:pointer;
+  }
+  button:hover{opacity:0.92;}
+  .hp{position:absolute; left:-9999px; top:-9999px;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="/">&larr; Back to Ons Nest</a>
+    <span class="kicker">Ons Nest</span>
+    <h1 class="serif">Get in touch</h1>
+    <p class="lede">Questions about the house, your stay, or your data on this site (see our <a href="/privacy/" style="color:var(--ink-soft);">privacy page</a>)? Send a message below.</p>
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thanks/">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp"><label>Leave this field empty: <input name="bot-field"></label></p>
+
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Send message</button>
+    </form>
+  </div>
+</body>
+</html>

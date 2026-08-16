@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Privacy — Ons Nest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#25475A">
+<link rel="icon" href="/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icons/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
+<style>
+  :root{
+    --sand:#F5F0E4; --paper:#FFFDF9; --ink:#232A2E; --ink-soft:#4C565C;
+    --line:#DDD2BC; --sea:#3C6B82; --sea-deep:#284A5C; --roof:#9A5238;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --sand:#141C22; --paper:#1B242A; --ink:#EDE7DA; --ink-soft:#B7C1C6; --line:#33414A; --sea:#7FB3CC; --sea-deep:#9FCBDF; --roof:#D48A6C; }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--sand); color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    padding: 8vh 6vw 10vh;
+  }
+  .serif{font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;}
+  .wrap{max-width:680px; margin:0 auto;}
+  a.back{color:var(--ink-soft); text-decoration:none; font-size:0.82rem; display:inline-block; margin-bottom:28px;}
+  a.back:hover{color:var(--ink);}
+  .kicker{display:block; font-size:0.74rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); margin-bottom:12px;}
+  h1{font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif; font-size:clamp(1.8rem, 3.6vw, 2.4rem); margin:0 0 8px;}
+  .updated{color:var(--ink-soft); font-size:0.82rem; margin-bottom:40px;}
+  h2{font-size:1.05rem; letter-spacing:0.02em; color:var(--ink); margin:40px 0 12px; border-top:1px solid var(--line); padding-top:28px;}
+  h2:first-of-type{border-top:none; padding-top:0; margin-top:0;}
+  p{color:var(--ink-soft); font-size:0.98rem; margin:0 0 14px; max-width:60ch;}
+  ul{margin:0 0 14px; padding-left:20px;}
+  li{color:var(--ink-soft); font-size:0.98rem; margin-bottom:6px;}
+  a{color:var(--sea);}
+  strong{color:var(--ink);}
+  .box{
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    padding:18px 20px; margin:20px 0; font-size:0.92rem; color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="/">&larr; Back to Ons Nest</a>
+    <span class="kicker">Ons Nest</span>
+    <h1>Privacy</h1>
+    <div class="updated">A plain-language explanation of what happens with your data on this site.</div>
+
+    <h2>Who runs this site</h2>
+    <p>Ons Nest is a self-catering holiday home in De Haan, Belgium, listed and bookable through Interhome. This website is a small, independently-run project — not a large company with a dedicated legal team, but we've tried to be precise and honest about what actually happens technically.</p>
+
+    <h2>This site does not use cookies</h2>
+    <p>No cookies are set by this site, by us or by anyone else on our behalf. We don't use Google Analytics, Meta/Facebook Pixel, or any advertising or marketing trackers.</p>
+
+    <h2>What we do collect</h2>
+    <p>To understand how many people visit and whether they go on to book, this site logs a small, anonymous event each time a page is viewed, and each time someone clicks through to the Interhome booking page. Each event contains only:</p>
+    <ul>
+      <li>the page visited</li>
+      <li>your browser's language setting (e.g. "nl", "en") — used only to show which languages visitors read the site in</li>
+      <li>the date and time</li>
+      <li>whether it was a page view or a click to the booking page</li>
+    </ul>
+    <div class="box">
+      We do <strong>not</strong> store your IP address, and we have no way to link separate visits back to the same person. There is no visitor ID, account, or fingerprinting of any kind.
+    </div>
+    <p>This data is stored on Netlify's infrastructure and is only viewable by us, through a password-protected page.</p>
+
+    <h2>Third parties involved in running this site</h2>
+    <p>A few outside services are involved simply by nature of how the site is built and hosted:</p>
+    <ul>
+      <li><strong>Netlify</strong> hosts this website. Like virtually any web host, its infrastructure logs incoming requests (including IP addresses) for security and reliability — this is Netlify's own standard processing, separate from anything we do. See <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Netlify's privacy policy</a>.</li>
+      <li><strong>OpenStreetMap</strong> — the map on the Location section of this site is loaded directly from openstreetmap.org. Loading it sends a request straight to their servers, which will see your IP address like any normal web request. See the <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">OpenStreetMap Foundation's privacy policy</a>.</li>
+      <li><strong>Interhome</strong> — clicking "Book now" takes you to Interhome's own website, a separate company, where their own privacy policy applies to anything you do there (including any booking or payment details). See <a href="https://www.interhome.com/imprint/#dataprotection" target="_blank" rel="noopener">Interhome's privacy policy</a>.</li>
+    </ul>
+
+    <h2>Your rights</h2>
+    <p>Because we don't store any personally identifying information about visitors, there generally isn't personal data of yours for us to look up, correct, or delete on request — but if you have any question about this, or about anything above, you're welcome to <a href="/contact/">get in touch</a>.</p>
+  </div>
+</body>
+</html>
