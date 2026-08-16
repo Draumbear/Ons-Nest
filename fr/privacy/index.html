@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Confidentialité — Ons Nest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#25475A">
+<link rel="icon" href="/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icons/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
+<style>
+  :root{
+    --sand:#F5F0E4; --paper:#FFFDF9; --ink:#232A2E; --ink-soft:#4C565C;
+    --line:#DDD2BC; --sea:#3C6B82; --sea-deep:#284A5C; --roof:#9A5238;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --sand:#141C22; --paper:#1B242A; --ink:#EDE7DA; --ink-soft:#B7C1C6; --line:#33414A; --sea:#7FB3CC; --sea-deep:#9FCBDF; --roof:#D48A6C; }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--sand); color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    padding: 8vh 6vw 10vh;
+  }
+  .wrap{max-width:680px; margin:0 auto;}
+  a.back{color:var(--ink-soft); text-decoration:none; font-size:0.82rem; display:block; margin-bottom:28px;}
+  a.back:hover{color:var(--ink);}
+  .kicker{display:block; font-size:0.74rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); margin-bottom:12px;}
+  h1{font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif; font-size:clamp(1.8rem, 3.6vw, 2.4rem); margin:0 0 8px;}
+  .updated{color:var(--ink-soft); font-size:0.82rem; margin-bottom:40px;}
+  h2{font-size:1.05rem; letter-spacing:0.02em; color:var(--ink); margin:40px 0 12px; border-top:1px solid var(--line); padding-top:28px;}
+  h2:first-of-type{border-top:none; padding-top:0; margin-top:0;}
+  p{color:var(--ink-soft); font-size:0.98rem; margin:0 0 14px; max-width:60ch;}
+  ul{margin:0 0 14px; padding-left:20px;}
+  li{color:var(--ink-soft); font-size:0.98rem; margin-bottom:6px;}
+  a{color:var(--sea);}
+  strong{color:var(--ink);}
+  .box{
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    padding:18px 20px; margin:20px 0; font-size:0.92rem; color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="/fr/">← Retour à Ons Nest</a>
+    <span class="kicker">Ons Nest</span>
+    <h1>Confidentialité</h1>
+    <div class="updated">En clair : ce qui se passe avec vos données sur ce site.</div>
+
+    <h2>Qui gère ce site</h2>
+    <p>Ons Nest est une maison de vacances indépendante à De Haan, en Belgique, réservable via Interhome. Ce site est un petit projet mené en toute indépendance — pas une grande entreprise dotée d'un service juridique — mais nous avons essayé d'être aussi précis et honnêtes que possible sur ce qui se passe réellement, techniquement.</p>
+
+    <h2>Ce site n'utilise pas de cookies</h2>
+    <p>Aucun cookie n'est déposé sur ce site, ni par nous ni par qui que ce soit en notre nom. Nous n'utilisons ni Google Analytics, ni Meta/Facebook Pixel, ni aucun autre outil publicitaire ou de suivi.</p>
+
+    <h2>Ce que nous collectons</h2>
+    <p>Pour comprendre combien de personnes visitent le site et combien poursuivent jusqu'à la réservation, ce site enregistre un événement anonyme à chaque page vue et à chaque clic vers la page de réservation Interhome. Cet événement contient uniquement :</p>
+    <ul>
+      <li>la page visitée</li>
+      <li>la langue de votre navigateur (ex. « fr », « en ») — utilisée uniquement pour savoir dans quelles langues les visiteurs lisent le site</li>
+      <li>la date et l'heure</li>
+      <li>s'il s'agissait d'une simple visite ou d'un clic vers la page de réservation</li>
+    </ul>
+    <div class="box">Nous ne stockons pas votre adresse IP, et nous n'avons aucun moyen de relier plusieurs visites à une même personne. Il n'existe ni identifiant visiteur, ni compte, ni empreinte numérique d'aucune sorte.</div>
+    <p>Ces données sont stockées sur l'infrastructure de Netlify et ne sont consultables que par nous, via une page protégée par mot de passe.</p>
+
+    <h2>Tiers impliqués dans le fonctionnement de ce site</h2>
+    <p>De par la manière dont ce site est construit et hébergé, quelques services externes interviennent nécessairement :</p>
+    <ul>
+      <li><strong>Netlify</strong> héberge ce site. Comme pratiquement tout hébergeur web, son infrastructure enregistre les requêtes entrantes (adresses IP comprises) à des fins de sécurité et de fiabilité — il s'agit du traitement standard propre à Netlify, indépendant de ce que nous faisons nous-mêmes. Voir <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">la politique de confidentialité de Netlify</a>.</li>
+      <li><strong>OpenStreetMap</strong> — la carte affichée dans la section Localisation est chargée directement depuis openstreetmap.org. Son chargement envoie donc une requête directement à leurs serveurs, qui verront votre adresse IP, comme pour toute requête web classique. Voir <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">la politique de confidentialité de l'OpenStreetMap Foundation</a>.</li>
+      <li><strong>Interhome</strong> — le bouton « Réserver » vous redirige vers le site d'Interhome, une entreprise distincte où s'applique sa propre politique de confidentialité pour tout ce que vous y faites (y compris vos données de réservation et de paiement). Voir <a href="https://www.interhome.com/imprint/#dataprotection" target="_blank" rel="noopener">la politique de confidentialité d'Interhome</a>.</li>
+    </ul>
+
+    <h2>Vos droits</h2>
+    <p>Comme nous ne conservons aucune donnée permettant de vous identifier personnellement, il n'y a généralement, tout simplement, rien de personnel à consulter, corriger ou supprimer à votre demande — mais pour toute question à ce sujet, ou sur tout ce qui précède, n'hésitez pas à <a href="/fr/contact/">nous contacter</a>.</p>
+  </div>
+</body>
+</html>

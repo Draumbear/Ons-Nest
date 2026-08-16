@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Datenschutz — Ons Nest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#25475A">
+<link rel="icon" href="/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icons/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
+<style>
+  :root{
+    --sand:#F5F0E4; --paper:#FFFDF9; --ink:#232A2E; --ink-soft:#4C565C;
+    --line:#DDD2BC; --sea:#3C6B82; --sea-deep:#284A5C; --roof:#9A5238;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --sand:#141C22; --paper:#1B242A; --ink:#EDE7DA; --ink-soft:#B7C1C6; --line:#33414A; --sea:#7FB3CC; --sea-deep:#9FCBDF; --roof:#D48A6C; }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--sand); color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    padding: 8vh 6vw 10vh;
+  }
+  .wrap{max-width:680px; margin:0 auto;}
+  a.back{color:var(--ink-soft); text-decoration:none; font-size:0.82rem; display:block; margin-bottom:28px;}
+  a.back:hover{color:var(--ink);}
+  .kicker{display:block; font-size:0.74rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea); margin-bottom:12px;}
+  h1{font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif; font-size:clamp(1.8rem, 3.6vw, 2.4rem); margin:0 0 8px;}
+  .updated{color:var(--ink-soft); font-size:0.82rem; margin-bottom:40px;}
+  h2{font-size:1.05rem; letter-spacing:0.02em; color:var(--ink); margin:40px 0 12px; border-top:1px solid var(--line); padding-top:28px;}
+  h2:first-of-type{border-top:none; padding-top:0; margin-top:0;}
+  p{color:var(--ink-soft); font-size:0.98rem; margin:0 0 14px; max-width:60ch;}
+  ul{margin:0 0 14px; padding-left:20px;}
+  li{color:var(--ink-soft); font-size:0.98rem; margin-bottom:6px;}
+  a{color:var(--sea);}
+  strong{color:var(--ink);}
+  .box{
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    padding:18px 20px; margin:20px 0; font-size:0.92rem; color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="/de/">← Zurück zu Ons Nest</a>
+    <span class="kicker">Ons Nest</span>
+    <h1>Datenschutz</h1>
+    <div class="updated">Ganz einfach erklärt: was mit Ihren Daten auf dieser Website passiert.</div>
+
+    <h2>Wer steckt dahinter</h2>
+    <p>Ons Nest ist ein unabhängiges Ferienhaus in De Haan, Belgien, buchbar über Interhome. Diese Website ist ein kleines, in Eigenregie betriebenes Projekt — kein großes Unternehmen mit eigener Rechtsabteilung. Wir haben uns aber bemüht, hier genau und ehrlich zu beschreiben, was technisch tatsächlich passiert.</p>
+
+    <h2>Diese Website verwendet keine Cookies</h2>
+    <p>Auf dieser Website werden keine Cookies gesetzt — weder von uns noch von Dritten in unserem Auftrag. Wir verwenden weder Google Analytics noch den Meta/Facebook-Pixel oder andere Werbe- oder Tracking-Tools.</p>
+
+    <h2>Was wir erfassen</h2>
+    <p>Um zu verstehen, wie viele Personen die Website besuchen und wie viele davon zur Buchung weitergehen, protokolliert diese Website bei jedem Seitenaufruf und bei jedem Klick zur Interhome-Buchungsseite ein kleines, anonymes Ereignis. Dieses enthält ausschließlich:</p>
+    <ul>
+      <li>die aufgerufene Seite</li>
+      <li>die Spracheinstellung Ihres Browsers (z. B. „de“, „en“) — dient ausschließlich dazu, zu sehen, in welchen Sprachen die Website gelesen wird</li>
+      <li>Datum und Uhrzeit</li>
+      <li>ob es sich um einen Seitenaufruf oder einen Klick zur Buchungsseite handelte</li>
+    </ul>
+    <div class="box">Wir speichern Ihre IP-Adresse nicht und können einzelne Besuche nicht derselben Person zuordnen. Es gibt weder eine Besucher-ID noch ein Konto noch irgendeine Form von Fingerprinting.</div>
+    <p>Diese Daten werden auf der Infrastruktur von Netlify gespeichert und sind ausschließlich für uns einsehbar, über eine passwortgeschützte Seite.</p>
+
+    <h2>Am Betrieb dieser Website beteiligte Drittanbieter</h2>
+    <p>Allein durch die Art, wie diese Website gebaut und gehostet ist, sind zwangsläufig ein paar externe Dienste beteiligt:</p>
+    <ul>
+      <li><strong>Netlify</strong> hostet diese Website. Wie praktisch jeder Webhoster protokolliert dessen Infrastruktur eingehende Anfragen (einschließlich IP-Adressen) aus Sicherheits- und Zuverlässigkeitsgründen — das ist Netlifys eigene Standardverarbeitung, unabhängig davon, was wir selbst tun. Siehe <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">die Datenschutzerklärung von Netlify</a>.</li>
+      <li><strong>OpenStreetMap</strong> — die Karte im Standortbereich wird direkt von openstreetmap.org geladen. Dabei wird eine Anfrage direkt an deren Server gesendet, die dabei — wie bei jeder normalen Webanfrage — Ihre IP-Adresse sehen. Siehe <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">die Datenschutzerklärung der OpenStreetMap Foundation</a>.</li>
+      <li><strong>Interhome</strong> — über den Button „Jetzt buchen“ gelangen Sie auf die eigene Website von Interhome, einem separaten Unternehmen, für das dort die eigene Datenschutzerklärung gilt (auch für Buchungs- und Zahlungsdaten). Siehe <a href="https://www.interhome.com/imprint/#dataprotection" target="_blank" rel="noopener">die Datenschutzerklärung von Interhome</a>.</li>
+    </ul>
+
+    <h2>Ihre Rechte</h2>
+    <p>Da wir keine personenbezogenen Daten von Besuchern speichern, gibt es in der Regel schlicht keine persönlichen Daten von Ihnen, die wir einsehen, berichtigen oder löschen könnten — bei Fragen dazu oder zu allem oben Genannten können Sie uns aber jederzeit <a href="/de/contact/">kontaktieren</a>.</p>
+  </div>
+</body>
+</html>

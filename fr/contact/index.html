@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl">
+<html lang="fr">
 <head>
 <meta charset="utf-8">
 <title>Contact — Ons Nest</title>
@@ -52,26 +52,26 @@
 </head>
 <body>
   <div class="wrap">
-    <a class="back" href="/">← Terug naar Ons Nest</a>
+    <a class="back" href="/fr/">← Retour à Ons Nest</a>
     <span class="kicker">Ons Nest</span>
-    <h1 class="serif">Neem contact op</h1>
-    <p class="lede">Vragen over het huis, je verblijf, of je gegevens op deze site (zie onze <a href="/privacy/" style="color:var(--ink-soft);">privacypagina</a>)? Stuur hieronder een bericht.</p>
+    <h1 class="serif">Nous contacter</h1>
+    <p class="lede">Des questions sur la maison, votre séjour, ou vos données sur ce site (voir notre <a href="/fr/privacy/" style="color:var(--ink-soft);">page de confidentialité</a>) ? Envoyez-nous un message ci-dessous.</p>
 
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thanks/">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/fr/contact/thanks/">
       <input type="hidden" name="form-name" value="contact">
-      <input type="hidden" name="language" value="nl">
-      <p class="hp"><label>Laat dit veld leeg: <input name="bot-field"></label></p>
+      <input type="hidden" name="language" value="fr">
+      <p class="hp"><label>Laissez ce champ vide : <input name="bot-field"></label></p>
 
-      <label for="name">Naam</label>
+      <label for="name">Nom</label>
       <input type="text" id="name" name="name" required>
 
       <label for="email">E-mail</label>
       <input type="email" id="email" name="email" required>
 
-      <label for="message">Bericht</label>
+      <label for="message">Message</label>
       <textarea id="message" name="message" required></textarea>
 
-      <button type="submit">Bericht versturen</button>
+      <button type="submit">Envoyer le message</button>
     </form>
   </div>
 </body>
