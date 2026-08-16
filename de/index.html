@@ -164,21 +164,17 @@
     color:var(--ink-soft);
     margin-left:8px;
   }
-  /* desktop: the hamburger wrapper disappears from layout so nav-links sits directly
-     in the nav row, exactly as if the <details> wrapper weren't there */
-  .nav-hamburger{
-    flex:1 1 auto;
-    display:block;
-    min-width:0;
-  }
-  .nav-hamburger summary{display:none;}
+  /* desktop and mobile use two entirely separate nav-link blocks (not one block
+     reused via a <details> visibility trick), toggled with plain display:none/block
+     per breakpoint -- the most cross-browser-reliable option */
+  .nav-hamburger{display:none;}
   .nav-links{
     display:flex;
     gap:30px;
     overflow-x:auto;
     scrollbar-width:none;
+    flex:1 1 auto;
     justify-content:center;
-    width:100%;
   }
   .nav-links::-webkit-scrollbar{display:none;}
   .nav-links a{
@@ -776,6 +772,7 @@
     .nav-inner{gap:8px; justify-content:flex-start;}
     .nav-book{padding:8px 12px; font-size:0.7rem;}
     .nav-brand{order:2;}
+    .nav-links{display:none;}
     .nav-hamburger{
       display:inline-block;
       position:relative;
@@ -806,10 +803,10 @@
     }
     .lang-switch{order:3; margin-left:auto;}
     .nav-book{order:4;}
-    .nav-hamburger:not([open]) .nav-links{display:none;}
+    .nav-hamburger:not([open]) .nav-links-mobile{display:none;}
     .lang-switch summary svg:not(.chev){display:none;}
     .lang-switch summary{padding:7px 8px;}
-    .nav-links{
+    .nav-links-mobile{
       position:absolute;
       top:calc(100% + 8px);
       left:0;
@@ -825,14 +822,22 @@
       min-width:180px;
       z-index:60;
     }
-    .nav-links a{padding:9px 12px; border-radius:3px;}
-    .nav-links a::after{display:none;}
-    .nav-links a:hover, .nav-links a.active{background:var(--sand-deep); color:var(--ink);}
+    .nav-links-mobile a{
+      padding:9px 12px;
+      border-radius:3px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size:0.82rem;
+      letter-spacing:0.04em;
+      text-decoration:none;
+      color:var(--ink-soft);
+      white-space:nowrap;
+    }
+    .nav-links-mobile a:hover, .nav-links-mobile a.active{background:var(--sand-deep); color:var(--ink);}
     footer{flex-direction:column; align-items:flex-start;}
   }
 
   a.btn:focus-visible, a:focus-visible{outline:2px solid var(--sea); outline-offset:2px;}
-  .nav-links a:focus-visible{outline:2px solid var(--sea); outline-offset:3px;}
+  .nav-links a:focus-visible, .nav-links-mobile a:focus-visible{outline:2px solid var(--sea); outline-offset:3px;}
 
   /* ---------- scroll reveal ---------- */
   .reveal{opacity:1; transform:none;}
@@ -850,11 +855,17 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner wrap">
     <a class="nav-brand" href="#top" id="navBrand">Ons Nest<span class="eyebrow" data-i18n="eyebrow_holiday_home">Ferienhaus</span></a>
+    <div class="nav-links sans" id="navLinks">
+      <a href="#story" data-nav="story" data-i18n="nav_story">Geschichte</a>
+      <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Haus</a>
+      <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Ausstattung</a>
+      <a href="#location" data-nav="location" data-i18n="nav_location">Lage</a>
+    </div>
     <details class="nav-hamburger" id="navHamburger">
       <summary aria-label="Menu">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7q4 -3 8 0t8 0"/><path d="M4 12q4 -3 8 0t8 0"/><path d="M4 17q4 -3 8 0t8 0"/></svg>
       </summary>
-      <div class="nav-links sans" id="navLinks">
+      <div class="nav-links-mobile sans" id="navLinksMobile">
         <a href="#story" data-nav="story" data-i18n="nav_story">Geschichte</a>
         <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Haus</a>
         <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Ausstattung</a>
@@ -1104,11 +1115,14 @@
   if("IntersectionObserver" in window && sections.length){
     var navObs = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        var link = document.querySelector('[data-nav="' + entry.target.id + '"]');
-        if(!link) return;
+        /* desktop nav-links and the mobile dropdown both have their own copy of these
+           links (sharing data-nav values), so update every matching element, not just
+           the first found */
+        var matches = document.querySelectorAll('[data-nav="' + entry.target.id + '"]');
+        if(!matches.length) return;
         if(entry.isIntersecting){
           navLinks.forEach(function(a){ a.classList.remove("active"); });
-          link.classList.add("active");
+          matches.forEach(function(a){ a.classList.add("active"); });
         }
       });
     }, {rootMargin:"-45% 0px -50% 0px", threshold:0});
