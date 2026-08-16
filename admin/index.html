@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ons Nest — Admin</title>
+<style>
+  :root {
+    --bg:#f7f5f2; --card:#ffffff; --ink:#2b2620; --muted:#756d61;
+    --accent:#b5762c; --accent-soft:#efe1cf; --line:#e7e0d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1c1a17; --card:#26221d; --ink:#f0ebe3; --muted:#a89e8f; --accent:#e0a860; --accent-soft:#3a3226; --line:#3a352c; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family: -apple-system, Segoe UI, Roboto, sans-serif; padding: 32px 24px 64px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .stat .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .value { font-size: 2rem; font-weight: 600; margin-top: 6px; }
+  .wide { max-width: 1100px; margin: 0 auto 24px; }
+  canvas { width: 100%; display:block; }
+  .lang-row { display:flex; align-items:center; gap:10px; margin: 8px 0; font-size:0.9rem; }
+  .lang-row .name { width:90px; flex-shrink:0; color: var(--muted); }
+  .lang-row .bar-track { flex:1; background: var(--accent-soft); border-radius: 6px; height: 10px; overflow:hidden; }
+  .lang-row .bar-fill { background: var(--accent); height: 100%; }
+  .lang-row .count { width:70px; text-align:right; font-variant-numeric: tabular-nums; }
+
+  #login { max-width: 340px; margin: 18vh auto 0; text-align:center; }
+  #login input { width:100%; padding:11px 14px; font-size:1rem; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink); margin-bottom:12px; }
+  #login button { width:100%; padding:11px 14px; font-size:1rem; border:0; border-radius:8px; background:var(--accent); color:#fff; cursor:pointer; }
+  #login .err { color:#c0392b; font-size:0.85rem; min-height:1.2em; margin-top:8px; }
+  #dashboard { display:none; }
+</style>
+</head>
+<body>
+
+<div id="login">
+  <h1>Ons Nest — Admin</h1>
+  <div class="sub">Enter the dashboard password</div>
+  <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
+  <button id="signIn">View dashboard</button>
+  <div class="err" id="err"></div>
+</div>
+
+<div id="dashboard">
+  <div style="max-width:1100px;margin:0 auto;">
+    <h1>Ons Nest — Analytics</h1>
+    <div class="sub" id="rangeSub"></div>
+  </div>
+
+  <div class="grid">
+    <div class="card stat"><div class="label">Visits</div><div class="value" id="statVisits">–</div></div>
+    <div class="card stat"><div class="label">Clicked through to booking site</div><div class="value" id="statClicks">–</div></div>
+    <div class="card stat"><div class="label">Conversion rate</div><div class="value" id="statConv">–</div></div>
+  </div>
+
+  <div class="wide card">
+    <div class="label" style="color:var(--muted);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px;">Visits per day</div>
+    <canvas id="visitsChart" height="220"></canvas>
+  </div>
+
+  <div class="wide card">
+    <div class="label" style="color:var(--muted);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px;">Visitor language</div>
+    <div id="langBars"></div>
+  </div>
+</div>
+
+<script>
+const LANG_NAMES = { en: "English", nl: "Dutch", de: "German", fr: "French", es: "Spanish", it: "Italian", pt: "Portuguese", unknown: "Unknown" };
+
+async function fetchStats(password) {
+  const res = await fetch("/.netlify/functions/stats", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ password, days: 30 }),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || ("HTTP " + res.status));
+  }
+  return res.json();
+}
+
+function renderDashboard(data) {
+  document.getElementById("login").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
+
+  document.getElementById("rangeSub").textContent =
+    "Last " + data.range_days + " days · generated " + new Date().toLocaleString();
+  document.getElementById("statVisits").textContent = data.total_visits;
+  document.getElementById("statClicks").textContent = data.commission_clicks;
+  document.getElementById("statConv").textContent = data.conversion_rate + "%";
+
+  drawVisitsChart(data.daily_series);
+  drawLangBars(data.lang_counts);
+}
+
+function drawVisitsChart(daily) {
+  const canvas = document.getElementById("visitsChart");
+  const dpr = window.devicePixelRatio || 1;
+  const cssW = canvas.clientWidth || 1000, cssH = 220;
+  canvas.width = cssW * dpr; canvas.height = cssH * dpr;
+  const ctx = canvas.getContext("2d");
+  ctx.scale(dpr, dpr);
+
+  const pad = { l: 40, r: 16, t: 16, b: 28 };
+  const w = cssW - pad.l - pad.r, h = cssH - pad.t - pad.b;
+  const values = daily.map((d) => d.count);
+  const maxV = Math.max(1, ...values);
+  const style = getComputedStyle(document.documentElement);
+  const muted = style.getPropertyValue("--muted").trim() || "#888";
+  const accent = style.getPropertyValue("--accent").trim() || "#b5762c";
+  const line = style.getPropertyValue("--line").trim() || "#ddd";
+
+  ctx.strokeStyle = line; ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.t + h - (h * i / 4);
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + w, y); ctx.stroke();
+    ctx.fillStyle = muted; ctx.font = "11px sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(Math.round(maxV * i / 4), pad.l - 8, y + 4);
+  }
+
+  if (values.length) {
+    ctx.beginPath();
+    ctx.strokeStyle = accent; ctx.lineWidth = 2;
+    daily.forEach((d, i) => {
+      const x = pad.l + (w * i / Math.max(1, daily.length - 1));
+      const y = pad.t + h - (h * d.count / maxV);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    ctx.fillStyle = accent;
+    daily.forEach((d, i) => {
+      const x = pad.l + (w * i / Math.max(1, daily.length - 1));
+      const y = pad.t + h - (h * d.count / maxV);
+      ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2); ctx.fill();
+    });
+
+    ctx.fillStyle = muted; ctx.font = "10px sans-serif"; ctx.textAlign = "center";
+    const step = Math.max(1, Math.ceil(daily.length / 7));
+    daily.forEach((d, i) => {
+      if (i % step === 0) {
+        const x = pad.l + (w * i / Math.max(1, daily.length - 1));
+        ctx.fillText((d.date || "").slice(5), x, pad.t + h + 18);
+      }
+    });
+  } else {
+    ctx.fillStyle = muted; ctx.textAlign = "center";
+    ctx.fillText("No data yet", pad.l + w / 2, pad.t + h / 2);
+  }
+}
+
+function drawLangBars(langCounts) {
+  const container = document.getElementById("langBars");
+  container.innerHTML = "";
+  const rows = Object.entries(langCounts || {}).sort((a, b) => b[1] - a[1]);
+  const total = rows.reduce((sum, [, v]) => sum + v, 0) || 1;
+  if (!rows.length) {
+    container.textContent = "No data yet";
+    return;
+  }
+  rows.forEach(([code, v]) => {
+    const pct = Math.round((v / total) * 100);
+    const row = document.createElement("div");
+    row.className = "lang-row";
+    row.innerHTML =
+      '<div class="name">' + (LANG_NAMES[code] || code) + "</div>" +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="count">' + v + " (" + pct + "%)</div>";
+    container.appendChild(row);
+  });
+}
+
+async function trySignIn() {
+  const pw = document.getElementById("pw").value;
+  const err = document.getElementById("err");
+  err.textContent = "";
+  try {
+    const data = await fetchStats(pw);
+    sessionStorage.setItem("onsNestAdminPw", pw);
+    renderDashboard(data);
+  } catch (e) {
+    err.textContent = e.message === "Wrong password" ? "Wrong password." : "Could not load stats: " + e.message;
+  }
+}
+
+document.getElementById("signIn").addEventListener("click", trySignIn);
+document.getElementById("pw").addEventListener("keydown", (e) => { if (e.key === "Enter") trySignIn(); });
+
+// Auto sign-in if a password was already entered this browser tab session.
+const savedPw = sessionStorage.getItem("onsNestAdminPw");
+if (savedPw) {
+  fetchStats(savedPw).then(renderDashboard).catch(() => sessionStorage.removeItem("onsNestAdminPw"));
+}
+</script>
+</body>
+</html>
