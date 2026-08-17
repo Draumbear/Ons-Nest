@@ -39,15 +39,33 @@
     background:var(--sand);
     color:var(--ink);
     font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:100vh;
-    padding:8vh 6vw;
     -webkit-font-smoothing:antialiased;
   }
   .sans{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;}
+  .center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:calc(100vh - 63px);
+    padding:8vh 6vw;
+  }
   .wrap{max-width:480px; text-align:center;}
+
+  .navbar{position:sticky; top:0; z-index:100; background:var(--paper); border-bottom:1px solid var(--line); box-shadow:0 1px 0 var(--line); padding:0 6vw;}
+  .nav-inner{max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:12px; padding-bottom:12px;}
+  .nav-brand{font-family: Georgia, "Iowan Old Style", serif; font-size:1.1rem; letter-spacing:0.04em; font-style:italic; text-decoration:none; color:var(--ink); flex:0 0 auto;}
+  .nav-brand .eyebrow{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-style:normal; font-size:0.62rem; letter-spacing:0.13em; text-transform:uppercase; color:var(--ink-soft); margin-left:8px;}
+  .nav-links{display:flex; gap:30px; flex:1 1 auto; justify-content:center;}
+  .nav-links a{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size:0.76rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--ink-soft); white-space:nowrap;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-book{flex:0 0 auto; padding:9px 18px; font-size:0.74rem; border-radius:2px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-weight:600; text-decoration:none; background:var(--sea-deep); color:var(--sand);}
+  .site-footer{max-width:1180px; margin:0 auto; padding:32px 6vw; display:flex; justify-content:space-between; align-items:center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size:0.78rem; color:var(--ink-soft); flex-wrap:wrap; gap:12px; border-top:1px solid var(--line);}
+  .site-footer a{color:var(--ink-soft);}
+  .site-footer a:hover{color:var(--ink);}
+  @media (max-width:700px){
+    .nav-links{display:none;}
+    .site-footer{flex-direction:column; align-items:flex-start;}
+  }
   .mark{width:64px; height:64px; margin:0 auto 28px; display:block;}
   .kicker{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -104,6 +122,20 @@
 </style>
 </head>
 <body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/en/">Ons Nest<span class="eyebrow">Holiday home</span></a>
+    <div class="nav-links sans">
+      <a href="/en/#story">Story</a>
+      <a href="/en/#gallery">House</a>
+      <a href="/en/#amenities">Facilities</a>
+      <a href="/en/#location">Location</a>
+    </div>
+    <a class="nav-book interhome-link" href="https://myrent.interhome.com/en/BE8420.355.1/" target="_blank" rel="noopener">Book now</a>
+  </div>
+</nav>
+
+<div class="center">
   <div class="wrap">
     <svg class="mark" viewBox="0 0 512 512" aria-hidden="true">
       <rect x="20" y="20" width="472" height="472" rx="112" fill="#25475A"/>
@@ -114,12 +146,32 @@
     <h1>This page has flown the nest.</h1>
     <p class="lede">We couldn't find the page you were looking for. It may have moved, or never existed at all.</p>
     <div class="cta-row">
-      <a class="btn btn-primary sans" href="/">Back to Ons Nest</a>
-      <a class="btn btn-ghost sans" href="https://myrent.interhome.com/en/BE8420.355.1/" target="_blank" rel="noopener">Check dates &amp; book</a>
+      <a class="btn btn-primary sans" href="/en/">Back to Ons Nest</a>
+      <a class="btn btn-ghost sans interhome-link" href="https://myrent.interhome.com/en/BE8420.355.1/" target="_blank" rel="noopener">Check dates &amp; book</a>
     </div>
     <div class="langs">
       <a href="/">Nederlands</a>·<a href="/en/">English</a>·<a href="/fr/">Français</a>·<a href="/de/">Deutsch</a>
     </div>
   </div>
+</div>
+
+<footer class="site-footer">
+  <div>Ons Nest &middot; De Haan aan Zee, Belgium &middot; &copy; 2026 Tanguy Swerts</div>
+  <div><a href="/en/privacy/">Privacy</a> &middot; <a href="/en/contact/">Contact</a></div>
+</footer>
+
+<script>
+(function () {
+  var lang = ((navigator.language || "unknown").split("-")[0] || "unknown").toLowerCase();
+  try {
+    var payload = JSON.stringify({ path: location.pathname, lang: lang, event: "visit" });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("/.netlify/functions/track", new Blob([payload], { type: "application/json" }));
+    } else {
+      fetch("/.netlify/functions/track", { method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true });
+    }
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>

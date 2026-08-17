@@ -35,14 +35,70 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/"/>
   </url>
 
-  <url><loc>https://ons-nest.be/privacy/</loc></url>
-  <url><loc>https://ons-nest.be/en/privacy/</loc></url>
-  <url><loc>https://ons-nest.be/fr/privacy/</loc></url>
-  <url><loc>https://ons-nest.be/de/privacy/</loc></url>
+  <url>
+    <loc>https://ons-nest.be/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/privacy/"/>
+  </url>
+  <url>
+    <loc>https://ons-nest.be/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/privacy/"/>
+  </url>
+  <url>
+    <loc>https://ons-nest.be/fr/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/privacy/"/>
+  </url>
+  <url>
+    <loc>https://ons-nest.be/de/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/privacy/"/>
+  </url>
 
-  <url><loc>https://ons-nest.be/contact/</loc></url>
-  <url><loc>https://ons-nest.be/en/contact/</loc></url>
-  <url><loc>https://ons-nest.be/fr/contact/</loc></url>
-  <url><loc>https://ons-nest.be/de/contact/</loc></url>
+  <url>
+    <loc>https://ons-nest.be/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/contact/"/>
+  </url>
+  <url>
+    <loc>https://ons-nest.be/en/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/contact/"/>
+  </url>
+  <url>
+    <loc>https://ons-nest.be/fr/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/contact/"/>
+  </url>
+  <url>
+    <loc>https://ons-nest.be/de/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ons-nest.be/de/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ons-nest.be/contact/"/>
+  </url>
 
 </urlset>

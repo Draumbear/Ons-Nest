@@ -41,5 +41,25 @@
     <p>Vielen Dank für Ihre Nachricht — wir melden uns bald bei Ihnen.</p>
     <a class="btn sans" href="/de/">Zurück zu Ons Nest</a>
   </div>
+
+<script>
+(function () {
+  var lang = ((navigator.language || "unknown").split("-")[0] || "unknown").toLowerCase();
+  function send(evt) {
+    try {
+      var payload = JSON.stringify({ path: location.pathname, lang: lang, event: evt });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon("/.netlify/functions/track", new Blob([payload], { type: "application/json" }));
+      } else {
+        fetch("/.netlify/functions/track", { method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true });
+      }
+    } catch (e) {}
+  }
+  send("visit");
+  document.querySelectorAll(".interhome-link").forEach(function (a) {
+    a.addEventListener("click", function () { send("commission-click"); });
+  });
+})();
+</script>
 </body>
 </html>

@@ -5,7 +5,14 @@
 <title>Privacy — Ons Nest</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, follow">
+<meta name="description" content="Hoe Ons Nest omgaat met bezoekersgegevens: geen cookies, geen tracking, volledige transparantie.">
 <meta name="theme-color" content="#25475A">
+<link rel="canonical" href="https://ons-nest.be/privacy/">
+<link rel="alternate" hreflang="nl" href="https://ons-nest.be/privacy/">
+<link rel="alternate" hreflang="en" href="https://ons-nest.be/en/privacy/">
+<link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/privacy/">
+<link rel="alternate" hreflang="de" href="https://ons-nest.be/de/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://ons-nest.be/privacy/">
 <link rel="icon" href="/icons/favicon.ico" sizes="32x32">
 <link rel="icon" href="/icons/favicon-16.png" type="image/png" sizes="16x16">
 <link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32">
@@ -44,11 +51,71 @@
     background:var(--paper); border:1px solid var(--line); border-radius:10px;
     padding:18px 20px; margin:20px 0; font-size:0.92rem; color:var(--ink-soft);
   }
+
+  .navbar{position:sticky; top:0; z-index:100; background:var(--paper); border-bottom:1px solid var(--line); box-shadow:0 1px 0 var(--line); margin:-8vh -6vw 0; padding:0 6vw;}
+  .nav-inner{max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:12px; padding-bottom:12px;}
+  .nav-brand{font-family: Georgia, "Iowan Old Style", serif; font-size:1.1rem; letter-spacing:0.04em; font-style:italic; text-decoration:none; color:var(--ink); flex:0 0 auto;}
+  .nav-brand .eyebrow{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-style:normal; font-size:0.62rem; letter-spacing:0.13em; text-transform:uppercase; color:var(--ink-soft); margin-left:8px;}
+  .nav-hamburger{display:none;}
+  .nav-links{display:flex; gap:30px; overflow-x:auto; scrollbar-width:none; flex:1 1 auto; justify-content:center;}
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links a{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size:0.76rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--ink-soft); white-space:nowrap; padding:5px 0;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-book{flex:0 0 auto; padding:9px 18px; font-size:0.74rem;}
+  .lang-switch{position:relative; flex:0 0 auto;}
+  .lang-switch summary{all:unset; cursor:pointer; display:inline-flex; align-items:center; gap:6px; padding:7px 10px; border:1px solid var(--line); border-radius:3px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size:0.72rem; font-weight:600; letter-spacing:0.03em; color:var(--ink-soft);}
+  .lang-switch summary::-webkit-details-marker{display:none;}
+  .lang-switch summary:hover{color:var(--ink); border-color:var(--sea);}
+  .lang-switch summary svg{width:14px;height:14px; stroke:currentColor; fill:none; stroke-width:1.5; stroke-linecap:round; flex:0 0 auto;}
+  .lang-switch summary .chev{width:9px;height:9px; stroke-width:2; transition:transform .15s ease;}
+  .lang-switch[open] summary .chev{transform:rotate(180deg);}
+  .lang-switch:not([open]) .lang-menu{display:none;}
+  .lang-menu{position:absolute; top:calc(100% + 8px); right:0; min-width:168px; background:var(--paper); border:1px solid var(--line); border-radius:5px; box-shadow:0 16px 34px -14px rgba(20,28,34,0.3); padding:5px; display:flex; flex-direction:column; gap:1px; z-index:60;}
+  .lang-menu a, .lang-menu .current{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:8px 10px; border-radius:3px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size:0.86rem; text-decoration:none; color:var(--ink-soft);}
+  .lang-menu a:hover{background:var(--paper); color:var(--ink);}
+  .lang-menu .current{color:var(--ink); font-weight:600;}
+  .lang-menu .code{font-size:0.66rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-soft);}
+  .btn{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; display:inline-flex; align-items:center; gap:10px; padding:9px 18px; border-radius:2px; font-size:0.74rem; font-weight:600; letter-spacing:0.02em; text-decoration:none; border:1px solid transparent;}
+  .btn-primary{background:var(--sea-deep); color:var(--sand);}
+  .site-footer{max-width:1180px; margin:56px auto 0; padding:32px 6vw 8px; display:flex; justify-content:space-between; align-items:center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size:0.78rem; color:var(--ink-soft); flex-wrap:wrap; gap:12px; border-top:1px solid var(--line);}
+  .site-footer a{color:var(--ink-soft);}
+  .site-footer a:hover{color:var(--ink);}
+  @media (max-width:860px){
+    .nav-inner{gap:8px; justify-content:flex-start;}
+    .nav-book{padding:8px 12px; font-size:0.7rem;}
+    .nav-brand{order:2;}
+    .nav-links{display:none;}
+    .nav-hamburger{display:inline-block; position:relative; order:1; flex:0 0 auto;}
+    .nav-hamburger summary{display:flex; align-items:center; justify-content:center; width:38px; height:38px; border:1px solid var(--line); border-radius:3px; cursor:pointer; color:var(--ink-soft); list-style:none;}
+    .nav-hamburger summary::-webkit-details-marker{display:none;}
+    .nav-hamburger summary svg{width:18px;height:18px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round;}
+    .lang-switch{order:3; margin-left:auto;}
+    .nav-book{order:4;}
+    .nav-hamburger:not([open]) .nav-links-mobile{display:none;}
+    .lang-switch summary svg:not(.chev){display:none;}
+    .lang-switch summary{padding:7px 8px;}
+    .nav-links-mobile{position:absolute; top:calc(100% + 8px); left:0; display:flex; flex-direction:column; gap:1px; background:var(--paper); border:1px solid var(--line); border-radius:5px; box-shadow:0 16px 34px -14px rgba(20,28,34,0.3); padding:5px; min-width:180px; z-index:60;}
+    .nav-links-mobile a{padding:9px 12px; border-radius:3px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size:0.82rem; text-decoration:none; color:var(--ink-soft); white-space:nowrap;}
+    .nav-links-mobile a:hover{background:var(--paper); color:var(--ink);}
+    .site-footer{flex-direction:column; align-items:flex-start;}
+  }
 </style>
 </head>
 <body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">Ons Nest<span class="eyebrow">Vakantiehuis</span></a>
+    <div class="nav-links sans"><a href="/#story">Verhaal</a><a href="/#gallery">Huis</a><a href="/#amenities">Voorzieningen</a><a href="/#location">Ligging</a></div>
+    <details class="nav-hamburger">
+      <summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7q4 -3 8 0t8 0"/><path d="M4 12q4 -3 8 0t8 0"/><path d="M4 17q4 -3 8 0t8 0"/></svg></summary>
+      <div class="nav-links-mobile sans"><a href="/#story">Verhaal</a><a href="/#gallery">Huis</a><a href="/#amenities">Voorzieningen</a><a href="/#location">Ligging</a></div>
+    </details>
+    <details class="lang-switch sans"><summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.5 3 14.5 0 18c-3-3.5-3-14.5 0-18z"/></svg><span class="label">NL</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><span class="current">Nederlands <span class="code">NL</span></span><a href="/en/privacy/">English <span class="code">EN</span></a><a href="/fr/privacy/">Français <span class="code">FR</span></a><a href="/de/privacy/">Deutsch <span class="code">DE</span></a></div></details>
+    <a class="btn btn-primary sans nav-book interhome-link" href="https://myrent.interhome.com/nl/BE8420.355.1/" target="_blank" rel="noopener">Boek nu</a>
+  </div>
+</nav>
+
   <div class="wrap">
-    <a class="back" href="/">← Terug naar Ons Nest</a>
     <span class="kicker">Ons Nest</span>
     <h1>Privacy</h1>
     <div class="updated">In gewone taal: wat er met je gegevens op deze site gebeurt.</div>
@@ -81,5 +148,29 @@
     <h2>Jouw rechten</h2>
     <p>Omdat we geen persoonlijk herleidbare gegevens van bezoekers bewaren, is er meestal simpelweg niets persoonlijks van jou om op te vragen, aan te passen of te laten verwijderen — maar bij vragen hierover, of over iets anders hierboven, kun je gerust <a href="/contact/">contact met ons opnemen</a>.</p>
   </div>
+<footer class="site-footer">
+  <div>Ons Nest &middot; De Haan aan Zee, Belgi&euml; &middot; &copy; 2026 Tanguy Swerts</div>
+  <div>Boeken via <a class="interhome-link" href="https://myrent.interhome.com/nl/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a></div>
+</footer>
+
+<script>
+(function () {
+  var lang = ((navigator.language || "unknown").split("-")[0] || "unknown").toLowerCase();
+  function send(evt) {
+    try {
+      var payload = JSON.stringify({ path: location.pathname, lang: lang, event: evt });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon("/.netlify/functions/track", new Blob([payload], { type: "application/json" }));
+      } else {
+        fetch("/.netlify/functions/track", { method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true });
+      }
+    } catch (e) {}
+  }
+  send("visit");
+  document.querySelectorAll(".interhome-link").forEach(function (a) {
+    a.addEventListener("click", function () { send("commission-click"); });
+  });
+})();
+</script>
 </body>
 </html>
