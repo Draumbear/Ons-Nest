@@ -574,7 +574,7 @@
     gap:2px;
     background:var(--line);
     border:1px solid var(--line);
-    margin-bottom:2px;
+    margin-bottom:28px;
   }
   .facility{
     background:var(--paper);
@@ -668,19 +668,40 @@
   }
   /* ---------- map ---------- */
   .map-embed{
-    margin-bottom:28px;
     border:1px solid var(--line);
     border-radius:4px;
     overflow:hidden;
     box-shadow:var(--shadow);
     background:var(--paper);
   }
+  .map-frame{
+    position:relative;
+  }
   .map-embed iframe{
     display:block;
     width:100%;
-    height:300px;
+    height:240px;
     border:0;
   }
+  .map-guard{
+    position:absolute;
+    inset:0;
+    z-index:5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:16px;
+    background:rgba(20,28,34,0.32);
+    color:#F5F0E4;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    cursor:pointer;
+    transition:opacity .2s ease;
+  }
+  .map-guard.is-hidden{opacity:0; visibility:hidden; pointer-events:none;}
+  .map-guard:focus-visible{outline:2px solid var(--sea); outline-offset:-3px;}
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]) .map-embed iframe{filter:invert(92%) hue-rotate(180deg) brightness(0.92) contrast(88%);}
   }
@@ -724,22 +745,27 @@
   .map-link:hover{color:var(--ink);}
   .map-link:focus-visible{outline:2px solid var(--sea); outline-offset:2px;}
 
-  .rules{
+  .rules-note{
+    margin-top:24px;
     background:var(--sand-deep);
     border:1px solid var(--line);
-    padding:17px 22px;
+    padding:12px 18px;
     border-radius:3px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:5px 10px;
   }
-  .rules h3{
+  .rules-note-label{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size:0.72rem;
-    letter-spacing:0.14em;
+    font-size:0.68rem;
+    letter-spacing:0.13em;
     text-transform:uppercase;
     color:var(--roof);
-    margin:0 0 9px;
+    font-weight:700;
+    flex:0 0 auto;
   }
-  .rules p{margin:0 0 6px; color:var(--ink-soft); font-size:0.96rem;}
-  .rules p:last-child{margin-bottom:0;}
+  .rules-note p{margin:0; color:var(--ink-soft); font-size:0.86rem;}
 
   /* ---------- cta band ---------- */
   /* Deliberately fixed dark surface, not theme tokens, so it reads the same in light and dark mode. */
@@ -1037,16 +1063,19 @@
         <h2 data-i18n="location_h2">Afstanden vanaf het huis.</h2>
       </div>
     </div>
-    <div class="map-embed reveal">
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=3.0296%2C51.2737%2C3.0396%2C51.2777&amp;layer=mapnik&amp;marker=51.2757%2C3.0346" loading="lazy" title="Ons Nest, Orteliuslaan 8, De Haan" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <div class="map-foot">
-        <div>
-          <span class="map-label sans" data-i18n="location_map_caption">Ligging</span>
-        </div>
-        <a class="map-link sans" href="https://www.openstreetmap.org/?mlat=51.2757&amp;mlon=3.0346#map=17/51.2757/3.0346" target="_blank" rel="noopener" data-i18n="location_map_link">Bekijk grotere kaart</a>
-      </div>
-    </div>
     <div class="loc reveal">
+      <div class="map-embed">
+        <div class="map-frame">
+          <div class="map-guard sans" tabindex="0" role="button" data-i18n="map_guard_label" aria-label="Klik om de kaart te activeren">Klik om de kaart te activeren</div>
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=3.0296%2C51.2737%2C3.0396%2C51.2777&amp;layer=mapnik&amp;marker=51.2757%2C3.0346" loading="lazy" title="Ons Nest, Orteliuslaan 8, De Haan" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-foot">
+          <div>
+            <span class="map-label sans" data-i18n="location_map_caption">Ligging</span>
+          </div>
+          <a class="map-link sans" href="https://www.openstreetmap.org/?mlat=51.2757&amp;mlon=3.0346#map=17/51.2757/3.0346" target="_blank" rel="noopener" data-i18n="location_map_link">Bekijk grotere kaart</a>
+        </div>
+      </div>
       <div>
         <div class="loc-group">
           <span class="loc-label" data-i18n="loc_onfoot">Te voet</span>
@@ -1071,11 +1100,11 @@
           </ul>
         </div>
       </div>
-      <div class="rules">
-        <h3 class="sans" data-i18n="house_notes_h3">Huisregels</h3>
-        <p data-i18n="house_notes_p1">Geen huisdieren en geen jongerengroepen. Dit is een rustige, goed onderhouden gezinswoning.</p>
-        <p data-i18n="house_notes_p2">Overal rookvrij. Hou rekening met de buren.</p>
-      </div>
+    </div>
+    <div class="rules-note reveal">
+      <span class="rules-note-label sans" data-i18n="house_notes_h3">Huisregels</span>
+      <p class="sans" data-i18n="house_notes_p1">Geen huisdieren en geen jongerengroepen. Dit is een rustige, goed onderhouden gezinswoning.</p>
+      <p class="sans" data-i18n="house_notes_p2">Overal rookvrij. Hou rekening met de buren.</p>
     </div>
   </section>
 
@@ -1312,9 +1341,27 @@
     if(viewHouseBtn){
       viewHouseBtn.addEventListener("click", function(e){
         e.preventDefault();
+        var galleryEl = document.getElementById("gallery");
+        if(galleryEl){
+          galleryEl.scrollIntoView({behavior: reduceMotion ? "smooth" : "auto", block: "start"});
+          if(history.pushState) history.pushState(null, "", "#gallery");
+        }
         openLightbox(0);
       });
     }
+  }
+
+  /* map: block scroll/zoom capture until the visitor deliberately interacts with it */
+  var mapFrame = document.querySelector(".map-frame");
+  var mapGuard = document.querySelector(".map-guard");
+  if(mapFrame && mapGuard){
+    var activateMap = function(){ mapGuard.classList.add("is-hidden"); };
+    var deactivateMap = function(){ mapGuard.classList.remove("is-hidden"); };
+    mapGuard.addEventListener("click", activateMap);
+    mapGuard.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); activateMap(); }
+    });
+    mapFrame.addEventListener("mouseleave", deactivateMap);
   }
 })();
 </script>
