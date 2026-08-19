@@ -12,7 +12,7 @@
 <link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/icons/android-chrome-192.png" type="image/png" sizes="192x192">
-<link rel="canonical" href="" id="canonicalLink">
+<link rel="canonical" href="https://ons-nest.be/en/">
 <link rel="alternate" hreflang="nl" href="https://ons-nest.be/">
 <link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/">
 <link rel="alternate" hreflang="de" href="https://ons-nest.be/de/">
@@ -20,7 +20,7 @@
 <link rel="alternate" hreflang="x-default" href="https://ons-nest.be/">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="" id="ogUrlMeta">
+<meta property="og:url" content="https://ons-nest.be/en/">
 <meta property="og:site_name" content="Ons Nest">
 <meta property="og:title" content="Holiday Home De Haan aan Zee — Ons Nest">
 <meta property="og:description" content="Ons Nest is a self-catering holiday home on the Belgian coast in De Haan aan Zee. Sleeps up to 6, 500m from the beach. Book on Interhome.">
@@ -952,6 +952,11 @@
     .gallery figure.reveal{transition-delay:calc(var(--d,0) * 70ms);}
   }
 </style>
+<noscript><style>
+  /* without JS the IntersectionObserver never adds .in, so make sure the
+     revealed sections are visible rather than stuck at opacity:0 */
+  .reveal{opacity:1 !important; transform:none !important;}
+</style></noscript>
 </head>
 <body>
 
@@ -996,7 +1001,7 @@
       <a class="rating-badge interhome-link" href="https://myrent.interhome.com/en/BE8420.355.1/#reviews" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.62 6.03.57-4.58 4.06 1.36 5.93L10 14.77l-5.28 2.91 1.36-5.93L1.5 7.69l6.03-.57z"/></svg><strong>4.6</strong> &middot; 17 reviews on Interhome</a>
     </div>
     <div class="hero-photo">
-      <img src="/images/hero-exterior.jpg" alt="The 1935 house in De Haan, with its dark tiled roofs and the wooden gate to Ons Nest's private entrance." data-i18n-alt="hero_img_alt">
+      <img src="/images/hero-exterior.jpg" width="1600" height="1703" alt="The 1935 house in De Haan, with its dark tiled roofs and the wooden gate to Ons Nest's private entrance." data-i18n-alt="hero_img_alt">
     </div>
   </div>
 </div>
@@ -1030,14 +1035,14 @@
       </div>
     </div>
     <div class="gallery" id="gallerGrid">
-      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/living-room.jpg" alt="Living room with two sofas, armchairs and a wooden coffee table." data-i18n-alt="gal_living_alt"><span class="cap sans" data-i18n="gal_living_cap">Living room</span></button></figure>
-      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/kitchen.jpg" alt="Country kitchen and dining table, with cream cabinetry and an arched garden door." data-i18n-alt="gal_kitchen_alt"><span class="cap sans" data-i18n="gal_kitchen_cap">Kitchen &amp; dining</span></button></figure>
-      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/terrace.jpg" alt="Paved terrace with dining table, chairs and a parasol." data-i18n-alt="gal_terrace_alt"><span class="cap sans" data-i18n="gal_terrace_cap">Terrace</span></button></figure>
-      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom1-ensuite.jpg" alt="Bedroom 1 with a built-in wardrobe and a doorway to its en-suite bathroom." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Bedroom 1 &middot; en-suite</span></button></figure>
-      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="En-suite shower room with a curved glass cabin shower." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">En-suite bathroom</span></button></figure>
-      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom2.jpg" alt="Bedroom 2, with twin beds pushed together beneath a sloped skylight." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Bedroom 2</span></button></figure>
-      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Bedroom 3, a children's room with a wooden bunk bed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Children's room &middot; bunk bed</span></button></figure>
-      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Family bathroom with bathtub, shower and tiled walls." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Family bathroom</span></button></figure>
+      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/living-room.jpg" alt="Living room with two sofas, armchairs and a wooden coffee table." data-i18n-alt="gal_living_alt"><span class="cap sans" data-i18n="gal_living_cap">Living room</span></button></figure>
+      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/kitchen.jpg" alt="Country kitchen and dining table, with cream cabinetry and an arched garden door." data-i18n-alt="gal_kitchen_alt"><span class="cap sans" data-i18n="gal_kitchen_cap">Kitchen &amp; dining</span></button></figure>
+      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/terrace.jpg" alt="Paved terrace with dining table, chairs and a parasol." data-i18n-alt="gal_terrace_alt"><span class="cap sans" data-i18n="gal_terrace_cap">Terrace</span></button></figure>
+      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bedroom1-ensuite.jpg" alt="Bedroom 1 with a built-in wardrobe and a doorway to its en-suite bathroom." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Bedroom 1 &middot; en-suite</span></button></figure>
+      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/ensuite-bathroom.jpg" alt="En-suite shower room with a curved glass cabin shower." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">En-suite bathroom</span></button></figure>
+      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bedroom2.jpg" alt="Bedroom 2, with twin beds pushed together beneath a sloped skylight." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Bedroom 2</span></button></figure>
+      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bedroom3-bunks.jpg" alt="Bedroom 3, a children's room with a wooden bunk bed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Children's room &middot; bunk bed</span></button></figure>
+      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bathroom.jpg" alt="Family bathroom with bathtub, shower and tiled walls." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Family bathroom</span></button></figure>
     </div>
   </section>
 
@@ -1225,15 +1230,6 @@
 <script>
 (function(){
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
-
-  /* self-referencing canonical/og:url so these are correct wherever this file is actually hosted */
-  try{
-    var selfUrl = location.href.split("#")[0];
-    var canonicalLink = document.getElementById("canonicalLink");
-    var ogUrlMeta = document.getElementById("ogUrlMeta");
-    if(canonicalLink) canonicalLink.setAttribute("href", selfUrl);
-    if(ogUrlMeta) ogUrlMeta.setAttribute("content", selfUrl);
-  }catch(e){}
 
   document.documentElement.lang = "en";
 

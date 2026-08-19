@@ -4,6 +4,7 @@
 
   <url>
     <loc>https://ons-nest.be/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/"/>
@@ -12,6 +13,7 @@
   </url>
   <url>
     <loc>https://ons-nest.be/en/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/"/>
@@ -20,6 +22,7 @@
   </url>
   <url>
     <loc>https://ons-nest.be/fr/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/"/>
@@ -28,6 +31,7 @@
   </url>
   <url>
     <loc>https://ons-nest.be/de/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/"/>
@@ -37,6 +41,7 @@
 
   <url>
     <loc>https://ons-nest.be/privacy/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/privacy/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/privacy/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/privacy/"/>
@@ -45,6 +50,7 @@
   </url>
   <url>
     <loc>https://ons-nest.be/en/privacy/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/privacy/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/privacy/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/privacy/"/>
@@ -53,6 +59,7 @@
   </url>
   <url>
     <loc>https://ons-nest.be/fr/privacy/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/privacy/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/privacy/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/privacy/"/>
@@ -61,6 +68,7 @@
   </url>
   <url>
     <loc>https://ons-nest.be/de/privacy/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/privacy/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/privacy/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/privacy/"/>
@@ -70,6 +78,7 @@
 
   <url>
     <loc>https://ons-nest.be/contact/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/contact/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/contact/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/contact/"/>
@@ -78,6 +87,7 @@
   </url>
   <url>
     <loc>https://ons-nest.be/en/contact/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/contact/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/contact/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/contact/"/>
@@ -86,6 +96,7 @@
   </url>
   <url>
     <loc>https://ons-nest.be/fr/contact/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/contact/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/contact/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/contact/"/>
@@ -94,6 +105,7 @@
   </url>
   <url>
     <loc>https://ons-nest.be/de/contact/</loc>
+    <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://ons-nest.be/contact/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ons-nest.be/en/contact/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/contact/"/>

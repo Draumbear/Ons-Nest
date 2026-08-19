@@ -12,7 +12,7 @@
 <link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/icons/android-chrome-192.png" type="image/png" sizes="192x192">
-<link rel="canonical" href="" id="canonicalLink">
+<link rel="canonical" href="https://ons-nest.be/">
 <link rel="alternate" hreflang="nl" href="https://ons-nest.be/">
 <link rel="alternate" hreflang="fr" href="https://ons-nest.be/fr/">
 <link rel="alternate" hreflang="de" href="https://ons-nest.be/de/">
@@ -20,7 +20,7 @@
 <link rel="alternate" hreflang="x-default" href="https://ons-nest.be/">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="" id="ogUrlMeta">
+<meta property="og:url" content="https://ons-nest.be/">
 <meta property="og:site_name" content="Ons Nest">
 <meta property="og:title" content="Vakantiehuis De Haan aan Zee — Ons Nest">
 <meta property="og:description" content="Ons Nest is een zelfverzorgend vakantiehuis aan de Belgische kust in De Haan aan Zee. Plaats voor 6 gasten, 500m van het strand. Boek via Interhome.">
@@ -952,6 +952,11 @@
     .gallery figure.reveal{transition-delay:calc(var(--d,0) * 70ms);}
   }
 </style>
+<noscript><style>
+  /* without JS the IntersectionObserver never adds .in, so make sure the
+     revealed sections are visible rather than stuck at opacity:0 */
+  .reveal{opacity:1 !important; transform:none !important;}
+</style></noscript>
 </head>
 <body>
 
@@ -996,7 +1001,7 @@
       <a class="rating-badge interhome-link" href="https://myrent.interhome.com/nl/BE8420.355.1/#reviews" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.62 6.03.57-4.58 4.06 1.36 5.93L10 14.77l-5.28 2.91 1.36-5.93L1.5 7.69l6.03-.57z"/></svg><strong>4,6</strong> &middot; 17 beoordelingen op Interhome</a>
     </div>
     <div class="hero-photo">
-      <img src="/images/hero-exterior.jpg" alt="Het huis uit 1935 in De Haan, met zijn donkere pannendaken en de houten poort naar de privé-ingang van Ons Nest." data-i18n-alt="hero_img_alt">
+      <img src="/images/hero-exterior.jpg" width="1600" height="1703" alt="Het huis uit 1935 in De Haan, met zijn donkere pannendaken en de houten poort naar de privé-ingang van Ons Nest." data-i18n-alt="hero_img_alt">
     </div>
   </div>
 </div>
@@ -1030,14 +1035,14 @@
       </div>
     </div>
     <div class="gallery" id="gallerGrid">
-      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/living-room.jpg" alt="Living met twee zetels, fauteuils en een houten salontafel." data-i18n-alt="gal_living_alt"><span class="cap sans" data-i18n="gal_living_cap">Living</span></button></figure>
-      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/kitchen.jpg" alt="Landelijke keuken en eettafel, met crèmekleurige kasten en een gewelfde tuindeur." data-i18n-alt="gal_kitchen_alt"><span class="cap sans" data-i18n="gal_kitchen_cap">Keuken &amp; eethoek</span></button></figure>
-      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/terrace.jpg" alt="Bestraat terras met eettafel, stoelen en een parasol." data-i18n-alt="gal_terrace_alt"><span class="cap sans" data-i18n="gal_terrace_cap">Terras</span></button></figure>
-      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom1-ensuite.jpg" alt="Slaapkamer 1, met een inbouwkast en een deur naar de eigen badkamer." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Slaapkamer 1 &middot; eigen badkamer</span></button></figure>
-      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="Eigen badkamer met een gebogen glazen douchecabine." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Eigen badkamer</span></button></figure>
-      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom2.jpg" alt="Slaapkamer 2, met twee bedden tegen elkaar onder een hellend dakraam." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Slaapkamer 2</span></button></figure>
-      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Slaapkamer 3, een kinderkamer met een houten stapelbed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Kinderkamer &middot; stapelbed</span></button></figure>
-      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Badkamer met ligbad, douche en betegelde muren." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Badkamer</span></button></figure>
+      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/living-room.jpg" alt="Living met twee zetels, fauteuils en een houten salontafel." data-i18n-alt="gal_living_alt"><span class="cap sans" data-i18n="gal_living_cap">Living</span></button></figure>
+      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/kitchen.jpg" alt="Landelijke keuken en eettafel, met crèmekleurige kasten en een gewelfde tuindeur." data-i18n-alt="gal_kitchen_alt"><span class="cap sans" data-i18n="gal_kitchen_cap">Keuken &amp; eethoek</span></button></figure>
+      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/terrace.jpg" alt="Bestraat terras met eettafel, stoelen en een parasol." data-i18n-alt="gal_terrace_alt"><span class="cap sans" data-i18n="gal_terrace_cap">Terras</span></button></figure>
+      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bedroom1-ensuite.jpg" alt="Slaapkamer 1, met een inbouwkast en een deur naar de eigen badkamer." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Slaapkamer 1 &middot; eigen badkamer</span></button></figure>
+      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/ensuite-bathroom.jpg" alt="Eigen badkamer met een gebogen glazen douchecabine." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Eigen badkamer</span></button></figure>
+      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bedroom2.jpg" alt="Slaapkamer 2, met twee bedden tegen elkaar onder een hellend dakraam." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Slaapkamer 2</span></button></figure>
+      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bedroom3-bunks.jpg" alt="Slaapkamer 3, een kinderkamer met een houten stapelbed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Kinderkamer &middot; stapelbed</span></button></figure>
+      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bathroom.jpg" alt="Badkamer met ligbad, douche en betegelde muren." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Badkamer</span></button></figure>
     </div>
   </section>
 
@@ -1225,15 +1230,6 @@
 <script>
 (function(){
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
-
-  /* self-referencing canonical/og:url so these are correct wherever this file is actually hosted */
-  try{
-    var selfUrl = location.href.split("#")[0];
-    var canonicalLink = document.getElementById("canonicalLink");
-    var ogUrlMeta = document.getElementById("ogUrlMeta");
-    if(canonicalLink) canonicalLink.setAttribute("href", selfUrl);
-    if(ogUrlMeta) ogUrlMeta.setAttribute("content", selfUrl);
-  }catch(e){}
 
   document.documentElement.lang = "nl";
 
