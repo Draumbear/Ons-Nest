@@ -623,13 +623,24 @@
   .amen h3.sub{margin-top:14px;}
   .amen ul{list-style:none;margin:0;padding:0;}
   .amen li{
-    padding:4px 0;
+    padding:6px 0;
     border-top:1px solid var(--line);
     font-size:0.96rem;
     color:var(--ink-soft);
   }
   .amen li:first-child{border-top:none;}
   .amen li b{color:var(--ink); font-weight:600;}
+  .amen li.has-icon{display:flex; align-items:flex-start; gap:9px;}
+  .amen-icon{
+    width:17px;height:17px;
+    flex:0 0 auto;
+    margin-top:2px;
+    stroke:var(--sea);
+    fill:none;
+    stroke-width:1.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
 
   /* ---------- location ---------- */
   .loc{
@@ -962,8 +973,8 @@
     <div class="story reveal">
       <blockquote data-i18n="story_quote">&ldquo;A beautiful, historical house, right in the centre of town.&rdquo;</blockquote>
       <div class="body">
-        <p data-i18n="story_p1">Ons Nest occupies its own wing of a house built in 1935 in De Haan's Concessiewijk, the town's protected district of Belle &Eacute;poque villas and quiet, tree-lined streets. Building height limits and dune conservation have kept the skyline low, so it still feels genuinely charming. The wing has its own private entrance, separate from the rest of the building. At the front is a terrace that's often sheltered from the wind by the dune, the kind of spot where breakfast turns into lunch.</p>
-        <p data-i18n="story_p2">Downstairs are a country kitchen with a long table for the whole family and a double living room built for slow evenings. Upstairs are three bedrooms, one with its own en-suite bathroom and one with room for the grandchildren's bunk beds, plus a second full bathroom so there's no queueing before the beach.</p>
+        <p data-i18n="story_p1">Building height limits and dune conservation have kept the skyline low, so it still feels genuinely charming the moment you step into the quiet, tree-lined streets. Five minutes later, sand between your toes. The terrace is often sheltered from the wind by the dune, the kind of spot where breakfast turns into lunch without anyone quite noticing. With three bedrooms, there's room for the whole family, from grandparents to grandchildren.</p>
+        <p data-i18n="story_p2">Downstairs are a country kitchen with a long table for the whole family and a living room built for slow evenings. Upstairs are three bedrooms, one with its own en-suite bathroom and one with room for the grandchildren's bunk beds, plus a second full bathroom so there's no queueing before the beach.</p>
       </div>
     </div>
   </section>
@@ -983,7 +994,7 @@
       <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="En-suite shower room with a curved glass cabin shower." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">En-suite bathroom</span></button></figure>
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom2.jpg" alt="Bedroom 2, with twin beds pushed together beneath a sloped skylight." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Bedroom 2</span></button></figure>
       <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Bedroom 3, a children's room with a wooden bunk bed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Bedroom 3 &middot; bunk room</span></button></figure>
-      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Family bathroom with bathtub, walk-in shower and tiled walls." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Family bathroom</span></button></figure>
+      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Family bathroom with bathtub, shower and tiled walls." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Family bathroom</span></button></figure>
     </div>
   </section>
 
@@ -1034,17 +1045,17 @@
       <div class="amen">
         <h3 data-i18n="sleeping_h3">Sleeping</h3>
         <ul>
-          <li data-i18n="sleep_bedroom1"><b>Bedroom 1</b>: double bed (2&times;90cm) with en-suite bathroom</li>
-          <li data-i18n="sleep_bedroom2"><b>Bedroom 2</b>: double bed (2&times;80cm)</li>
-          <li data-i18n="sleep_bedroom3"><b>Bedroom 3</b>: bunk beds (2&times;90cm)</li>
-          <li data-i18n="sleep_cot"><b>Baby cot</b> available on request</li>
+          <li class="has-icon" data-i18n="sleep_bedroom1"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Bedroom 1</b>: double bed (2&times;90cm) with en-suite bathroom</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom2"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Bedroom 2</b>: double bed (2&times;80cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Bedroom 3</b>: bunk beds (2&times;90cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_cot"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="9" width="14" height="7" rx="1"/><path d="M5 16v3M19 16v3M7 9V6M10.5 9V6M14 9V6M17 9V6"/></svg><span><b>Baby cot</b> available on request</span></li>
         </ul>
       </div>
       <div class="amen">
         <h3 data-i18n="bathrooms_h3">Bathrooms</h3>
         <ul>
-          <li data-i18n="bath_family"><b>Family bathroom</b>: bath with overhead shower</li>
-          <li data-i18n="bath_ensuite"><b>En-suite</b>: walk-in cabin shower</li>
+          <li class="has-icon" data-i18n="bath_family"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2z"/><path d="M4 12V9.5A2.5 2.5 0 0 1 6.5 7"/><circle cx="9" cy="6" r="1"/><path d="M3 19h18"/></svg><span><b>Family bathroom</b>: bath with shower</span></li>
+          <li class="has-icon" data-i18n="bath_ensuite"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="1"/><circle cx="12" cy="6.5" r="1"/><path d="M9 10h6M9 14v5M12 14v5M15 14v5"/></svg><span><b>En-suite</b>: shower cabin</span></li>
         </ul>
         <h3 class="sub" data-i18n="goodtoknow_h3">Good to know</h3>
         <ul>

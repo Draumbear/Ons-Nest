@@ -623,13 +623,24 @@
   .amen h3.sub{margin-top:14px;}
   .amen ul{list-style:none;margin:0;padding:0;}
   .amen li{
-    padding:4px 0;
+    padding:6px 0;
     border-top:1px solid var(--line);
     font-size:0.96rem;
     color:var(--ink-soft);
   }
   .amen li:first-child{border-top:none;}
   .amen li b{color:var(--ink); font-weight:600;}
+  .amen li.has-icon{display:flex; align-items:flex-start; gap:9px;}
+  .amen-icon{
+    width:17px;height:17px;
+    flex:0 0 auto;
+    margin-top:2px;
+    stroke:var(--sea);
+    fill:none;
+    stroke-width:1.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
 
   /* ---------- location ---------- */
   .loc{
@@ -962,8 +973,8 @@
     <div class="story reveal">
       <blockquote data-i18n="story_quote">&ldquo;Een mooi, karaktervol huis, vlak in het centrum.&rdquo;</blockquote>
       <div class="body">
-        <p data-i18n="story_p1">Ons Nest is een eigen vleugel van een huis uit 1935, gelegen in de Concessiewijk van De Haan, de beschermde wijk met belle-&eacute;poquevilla's en rustige, groene straten. Strenge bouwregels en de bescherming van de duinen hebben het dorp laag gehouden &mdash; en dat voel je nog steeds. De vleugel heeft een eigen ingang, apart van de rest van het huis. Vooraan ligt een terras dat dankzij de duin vaak windvrij is, het soort plek waar het ontbijt ongemerkt overgaat in de lunch.</p>
-        <p data-i18n="story_p2">Beneden vind je een landelijke keuken met een lange tafel voor het hele gezin en een dubbele living voor rustige avonden. Boven liggen drie slaapkamers, &eacute;&eacute;n met eigen badkamer en &eacute;&eacute;n met plaats voor de stapelbedden van de kleinkinderen, plus een tweede volledige badkamer zodat niemand hoeft te wachten voor het strand.</p>
+        <p data-i18n="story_p1">Strenge bouwregels en de bescherming van de duinen hebben het dorp laag gehouden &mdash; en dat voel je nog steeds zodra je de rustige, groene straten in wandelt. Vijf minuten later sta je met je tenen in het zand. Het terras is dankzij de duin vaak windvrij, het soort plek waar het ontbijt ongemerkt overgaat in de lunch. Met drie slaapkamers is er ruimte voor het hele gezin, van opa en oma tot de kleinkinderen.</p>
+        <p data-i18n="story_p2">Beneden vind je een landelijke keuken met een lange tafel voor het hele gezin en een living voor rustige avonden. Boven liggen drie slaapkamers, &eacute;&eacute;n met eigen badkamer en &eacute;&eacute;n met plaats voor de stapelbedden van de kleinkinderen, plus een tweede volledige badkamer zodat niemand hoeft te wachten voor het strand.</p>
       </div>
     </div>
   </section>
@@ -980,10 +991,10 @@
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/kitchen.jpg" alt="Landelijke keuken en eettafel, met crèmekleurige kasten en een gewelfde tuindeur." data-i18n-alt="gal_kitchen_alt"><span class="cap sans" data-i18n="gal_kitchen_cap">Keuken &amp; eethoek</span></button></figure>
       <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/terrace.jpg" alt="Bestraat terras met eettafel, stoelen en een parasol." data-i18n-alt="gal_terrace_alt"><span class="cap sans" data-i18n="gal_terrace_cap">Terras</span></button></figure>
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom1-ensuite.jpg" alt="Slaapkamer 1, met een inbouwkast en een deur naar de eigen badkamer." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Slaapkamer 1 &middot; eigen badkamer</span></button></figure>
-      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="Eigen badkamer met een gebogen glazen inloopdouche." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Eigen badkamer</span></button></figure>
+      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="Eigen badkamer met een gebogen glazen douchecabine." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Eigen badkamer</span></button></figure>
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom2.jpg" alt="Slaapkamer 2, met twee bedden tegen elkaar onder een hellend dakraam." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Slaapkamer 2</span></button></figure>
       <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Slaapkamer 3, een kinderkamer met een houten stapelbed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Slaapkamer 3 &middot; stapelbedkamer</span></button></figure>
-      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Badkamer met ligbad, inloopdouche en betegelde muren." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Badkamer</span></button></figure>
+      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Badkamer met ligbad, douche en betegelde muren." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Badkamer</span></button></figure>
     </div>
   </section>
 
@@ -1034,17 +1045,17 @@
       <div class="amen">
         <h3 data-i18n="sleeping_h3">Slapen</h3>
         <ul>
-          <li data-i18n="sleep_bedroom1"><b>Slaapkamer 1</b>: tweepersoonsbed (2&times;90cm) met eigen badkamer</li>
-          <li data-i18n="sleep_bedroom2"><b>Slaapkamer 2</b>: tweepersoonsbed (2&times;80cm)</li>
-          <li data-i18n="sleep_bedroom3"><b>Slaapkamer 3</b>: stapelbedden (2&times;90cm)</li>
-          <li data-i18n="sleep_cot"><b>Kinderbedje</b> op aanvraag</li>
+          <li class="has-icon" data-i18n="sleep_bedroom1"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Slaapkamer 1</b>: tweepersoonsbed (2&times;90cm) met eigen badkamer</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom2"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Slaapkamer 2</b>: tweepersoonsbed (2&times;80cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Slaapkamer 3</b>: stapelbedden (2&times;90cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_cot"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="9" width="14" height="7" rx="1"/><path d="M5 16v3M19 16v3M7 9V6M10.5 9V6M14 9V6M17 9V6"/></svg><span><b>Kinderbedje</b> op aanvraag</span></li>
         </ul>
       </div>
       <div class="amen">
         <h3 data-i18n="bathrooms_h3">Badkamers</h3>
         <ul>
-          <li data-i18n="bath_family"><b>Badkamer</b>: bad met regendouche</li>
-          <li data-i18n="bath_ensuite"><b>Eigen badkamer</b>: inloopdouche</li>
+          <li class="has-icon" data-i18n="bath_family"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2z"/><path d="M4 12V9.5A2.5 2.5 0 0 1 6.5 7"/><circle cx="9" cy="6" r="1"/><path d="M3 19h18"/></svg><span><b>Badkamer</b>: bad met douche</span></li>
+          <li class="has-icon" data-i18n="bath_ensuite"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="1"/><circle cx="12" cy="6.5" r="1"/><path d="M9 10h6M9 14v5M12 14v5M15 14v5"/></svg><span><b>Eigen badkamer</b>: douchecabine</span></li>
         </ul>
         <h3 class="sub" data-i18n="goodtoknow_h3">Goed om weten</h3>
         <ul>

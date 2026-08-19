@@ -623,13 +623,24 @@
   .amen h3.sub{margin-top:14px;}
   .amen ul{list-style:none;margin:0;padding:0;}
   .amen li{
-    padding:4px 0;
+    padding:6px 0;
     border-top:1px solid var(--line);
     font-size:0.96rem;
     color:var(--ink-soft);
   }
   .amen li:first-child{border-top:none;}
   .amen li b{color:var(--ink); font-weight:600;}
+  .amen li.has-icon{display:flex; align-items:flex-start; gap:9px;}
+  .amen-icon{
+    width:17px;height:17px;
+    flex:0 0 auto;
+    margin-top:2px;
+    stroke:var(--sea);
+    fill:none;
+    stroke-width:1.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
 
   /* ---------- location ---------- */
   .loc{
@@ -962,8 +973,8 @@
     <div class="story reveal">
       <blockquote data-i18n="story_quote">&laquo;&nbsp;Une belle maison de caract&egrave;re, en plein centre-ville.&nbsp;&raquo;</blockquote>
       <div class="body">
-        <p data-i18n="story_p1">Ons Nest occupe sa propre aile d'une maison construite en 1935, dans la Concessiewijk de De Haan, le quartier protégé aux villas Belle Époque et aux rues calmes et arborées. Des règlements stricts sur la hauteur des bâtiments et la préservation des dunes ont permis à la ville de garder son échelle humaine, et ça se sent encore aujourd'hui. Cette aile a sa propre entrée, séparée du reste du bâtiment. À l'avant se trouve une terrasse souvent à l'abri du vent grâce à la dune, le genre d'endroit où le petit-déjeuner se transforme en déjeuner sans qu'on s'en rende compte.</p>
-        <p data-i18n="story_p2">Au rez-de-chauss&eacute;e, une cuisine familiale avec une grande table pour toute la famille et un double salon fait pour les soir&eacute;es tranquilles. &Agrave; l'&eacute;tage, trois chambres, l'une avec sa propre salle de bain, l'autre avec des lits superpos&eacute;s pour les petits-enfants, plus une deuxi&egrave;me salle de bain compl&egrave;te pour &eacute;viter la file avant d'aller &agrave; la plage.</p>
+        <p data-i18n="story_p1">Des règlements stricts sur la hauteur des bâtiments et la préservation des dunes ont permis à la ville de garder son échelle humaine, et ça se sent encore aujourd'hui dès qu'on s'engage dans ces rues calmes et arborées. Cinq minutes plus tard, les pieds dans le sable. La terrasse, souvent à l'abri du vent grâce à la dune, c'est le genre d'endroit où le petit-déjeuner se transforme en déjeuner sans qu'on s'en rende compte. Avec trois chambres, il y a de la place pour toute la famille, des grands-parents aux petits-enfants.</p>
+        <p data-i18n="story_p2">Au rez-de-chauss&eacute;e, une cuisine familiale avec une grande table pour toute la famille et un salon fait pour les soir&eacute;es tranquilles. &Agrave; l'&eacute;tage, trois chambres, l'une avec sa propre salle de bain, l'autre avec des lits superpos&eacute;s pour les petits-enfants, plus une deuxi&egrave;me salle de bain compl&egrave;te pour &eacute;viter la file avant d'aller &agrave; la plage.</p>
       </div>
     </div>
   </section>
@@ -980,10 +991,10 @@
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/kitchen.jpg" alt="Cuisine familiale et table &agrave; manger, avec des meubles cr&egrave;me et une porte de jardin cintr&eacute;e." data-i18n-alt="gal_kitchen_alt"><span class="cap sans" data-i18n="gal_kitchen_cap">Cuisine &amp; salle &agrave; manger</span></button></figure>
       <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/terrace.jpg" alt="Terrasse pav&eacute;e avec table &agrave; manger, chaises et parasol." data-i18n-alt="gal_terrace_alt"><span class="cap sans" data-i18n="gal_terrace_cap">Terrasse</span></button></figure>
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom1-ensuite.jpg" alt="Chambre 1, avec une armoire encastr&eacute;e et une porte vers sa salle de bain priv&eacute;e." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Chambre 1 &middot; salle de bain priv&eacute;e</span></button></figure>
-      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="Salle de bain priv&eacute;e avec une douche &agrave; l'italienne en verre incurv&eacute;." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Salle de bain priv&eacute;e</span></button></figure>
+      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="Salle de bain priv&eacute;e avec une cabine de douche en verre incurv&eacute;." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Salle de bain priv&eacute;e</span></button></figure>
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom2.jpg" alt="Chambre 2, avec deux lits jumeaux rapproch&eacute;s sous une fen&ecirc;tre de toit en pente." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Chambre 2</span></button></figure>
       <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Chambre 3, une chambre d'enfants avec des lits superpos&eacute;s en bois." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Chambre 3 &middot; lits superpos&eacute;s</span></button></figure>
-      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Salle de bain avec baignoire, douche &agrave; l'italienne et murs carrel&eacute;s." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Salle de bain</span></button></figure>
+      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Salle de bain avec baignoire, douche et murs carrel&eacute;s." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Salle de bain</span></button></figure>
     </div>
   </section>
 
@@ -1034,17 +1045,17 @@
       <div class="amen">
         <h3 data-i18n="sleeping_h3">Chambres</h3>
         <ul>
-          <li data-i18n="sleep_bedroom1"><b>Chambre 1</b>&nbsp;: lit double (2&times;90cm) avec salle de bain privée</li>
-          <li data-i18n="sleep_bedroom2"><b>Chambre 2</b>&nbsp;: lit double (2&times;80cm)</li>
-          <li data-i18n="sleep_bedroom3"><b>Chambre 3</b>&nbsp;: lits superpos&eacute;s (2&times;90cm)</li>
-          <li data-i18n="sleep_cot"><b>Lit b&eacute;b&eacute;</b> sur demande</li>
+          <li class="has-icon" data-i18n="sleep_bedroom1"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Chambre 1</b>&nbsp;: lit double (2&times;90cm) avec salle de bain privée</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom2"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Chambre 2</b>&nbsp;: lit double (2&times;80cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Chambre 3</b>&nbsp;: lits superpos&eacute;s (2&times;90cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_cot"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="9" width="14" height="7" rx="1"/><path d="M5 16v3M19 16v3M7 9V6M10.5 9V6M14 9V6M17 9V6"/></svg><span><b>Lit b&eacute;b&eacute;</b> sur demande</span></li>
         </ul>
       </div>
       <div class="amen">
         <h3 data-i18n="bathrooms_h3">Salles de bain</h3>
         <ul>
-          <li data-i18n="bath_family"><b>Salle de bain familiale</b>&nbsp;: baignoire avec douche</li>
-          <li data-i18n="bath_ensuite"><b>Salle de bain priv&eacute;e</b>&nbsp;: douche &agrave; l'italienne</li>
+          <li class="has-icon" data-i18n="bath_family"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2z"/><path d="M4 12V9.5A2.5 2.5 0 0 1 6.5 7"/><circle cx="9" cy="6" r="1"/><path d="M3 19h18"/></svg><span><b>Salle de bain familiale</b>&nbsp;: baignoire avec douche</span></li>
+          <li class="has-icon" data-i18n="bath_ensuite"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="1"/><circle cx="12" cy="6.5" r="1"/><path d="M9 10h6M9 14v5M12 14v5M15 14v5"/></svg><span><b>Salle de bain priv&eacute;e</b>&nbsp;: cabine de douche</span></li>
         </ul>
         <h3 class="sub" data-i18n="goodtoknow_h3">&Agrave; savoir</h3>
         <ul>

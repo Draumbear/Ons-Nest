@@ -623,13 +623,24 @@
   .amen h3.sub{margin-top:14px;}
   .amen ul{list-style:none;margin:0;padding:0;}
   .amen li{
-    padding:4px 0;
+    padding:6px 0;
     border-top:1px solid var(--line);
     font-size:0.96rem;
     color:var(--ink-soft);
   }
   .amen li:first-child{border-top:none;}
   .amen li b{color:var(--ink); font-weight:600;}
+  .amen li.has-icon{display:flex; align-items:flex-start; gap:9px;}
+  .amen-icon{
+    width:17px;height:17px;
+    flex:0 0 auto;
+    margin-top:2px;
+    stroke:var(--sea);
+    fill:none;
+    stroke-width:1.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
 
   /* ---------- location ---------- */
   .loc{
@@ -962,8 +973,8 @@
     <div class="story reveal">
       <blockquote data-i18n="story_quote">&bdquo;Ein sch&ouml;nes, geschichtstr&auml;chtiges Haus, mitten im Zentrum.&ldquo;</blockquote>
       <div class="body">
-        <p data-i18n="story_p1">Ons Nest nimmt einen eigenen Flügel eines Hauses aus dem Jahr 1935 ein, in der Concessiewijk von De Haan, dem geschützten Viertel mit Belle-Époque-Villen und ruhigen, grünen Straßen. Strenge Bauhöhenvorschriften und der Schutz der Dünen haben dem Ort seinen menschlichen Maßstab bewahrt &mdash; und das spürt man bis heute. Der Flügel hat einen eigenen Eingang, getrennt vom Rest des Hauses. Vorne liegt eine Terrasse, die dank der Düne oft windgeschützt ist, die Art von Ort, an dem aus dem Frühstück ganz von selbst ein Mittagessen wird.</p>
-        <p data-i18n="story_p2">Unten liegen eine l&auml;ndliche K&uuml;che mit langem Tisch f&uuml;r die ganze Familie und ein doppeltes Wohnzimmer f&uuml;r ruhige Abende. Oben liegen drei Schlafzimmer, eines mit eigenem Bad, eines mit Platz f&uuml;r die Stockbetten der Enkelkinder, dazu ein zweites, vollst&auml;ndiges Badezimmer, damit vor dem Strand niemand warten muss.</p>
+        <p data-i18n="story_p1">Strenge Bauh&ouml;henvorschriften und der Schutz der D&uuml;nen haben dem Ort seinen menschlichen Ma&szlig;stab bewahrt &mdash; das sp&uuml;rt man bis heute, sobald man in die ruhigen, gr&uuml;nen Stra&szlig;en eintaucht. F&uuml;nf Minuten sp&auml;ter stehen die F&uuml;&szlig;e im Sand. Die Terrasse ist dank der D&uuml;ne oft windgesch&uuml;tzt, die Art von Ort, an dem aus dem Fr&uuml;hst&uuml;ck ganz von selbst ein Mittagessen wird. Mit drei Schlafzimmern ist Platz f&uuml;r die ganze Familie, von den Gro&szlig;eltern bis zu den Enkelkindern.</p>
+        <p data-i18n="story_p2">Unten liegen eine l&auml;ndliche K&uuml;che mit langem Tisch f&uuml;r die ganze Familie und ein Wohnzimmer f&uuml;r ruhige Abende. Oben liegen drei Schlafzimmer, eines mit eigenem Bad, eines mit Platz f&uuml;r die Stockbetten der Enkelkinder, dazu ein zweites, vollst&auml;ndiges Badezimmer, damit vor dem Strand niemand warten muss.</p>
       </div>
     </div>
   </section>
@@ -1034,17 +1045,17 @@
       <div class="amen">
         <h3 data-i18n="sleeping_h3">Schlafen</h3>
         <ul>
-          <li data-i18n="sleep_bedroom1"><b>Schlafzimmer 1</b>: Doppelbett (2&times;90cm) mit eigenem Bad</li>
-          <li data-i18n="sleep_bedroom2"><b>Schlafzimmer 2</b>: Doppelbett (2&times;80cm)</li>
-          <li data-i18n="sleep_bedroom3"><b>Schlafzimmer 3</b>: Stockbetten (2&times;90cm)</li>
-          <li data-i18n="sleep_cot"><b>Babybett</b> auf Anfrage</li>
+          <li class="has-icon" data-i18n="sleep_bedroom1"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Schlafzimmer 1</b>: Doppelbett (2&times;90cm) mit eigenem Bad</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom2"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Schlafzimmer 2</b>: Doppelbett (2&times;80cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Schlafzimmer 3</b>: Stockbetten (2&times;90cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_cot"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="9" width="14" height="7" rx="1"/><path d="M5 16v3M19 16v3M7 9V6M10.5 9V6M14 9V6M17 9V6"/></svg><span><b>Babybett</b> auf Anfrage</span></li>
         </ul>
       </div>
       <div class="amen">
         <h3 data-i18n="bathrooms_h3">Badezimmer</h3>
         <ul>
-          <li data-i18n="bath_family"><b>Familienbad</b>: Wanne mit Regendusche</li>
-          <li data-i18n="bath_ensuite"><b>Eigenes Bad</b>: begehbare Dusche</li>
+          <li class="has-icon" data-i18n="bath_family"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2z"/><path d="M4 12V9.5A2.5 2.5 0 0 1 6.5 7"/><circle cx="9" cy="6" r="1"/><path d="M3 19h18"/></svg><span><b>Familienbad</b>: Wanne mit Dusche</span></li>
+          <li class="has-icon" data-i18n="bath_ensuite"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="1"/><circle cx="12" cy="6.5" r="1"/><path d="M9 10h6M9 14v5M12 14v5M15 14v5"/></svg><span><b>Eigenes Bad</b>: Duschkabine</span></li>
         </ul>
         <h3 class="sub" data-i18n="goodtoknow_h3">Gut zu wissen</h3>
         <ul>
