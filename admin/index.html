@@ -28,7 +28,25 @@
   .stat .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
   .stat .value { font-size: 2rem; font-weight: 600; margin-top: 6px; }
   .wide { max-width: 1100px; margin: 0 auto 24px; }
-  canvas { width: 100%; display:block; }
+  .panel-head { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+  .panel-label { color:var(--muted); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; }
+  .range-picker { display:flex; gap:4px; flex-wrap:wrap; }
+  .range-picker button {
+    font-family:inherit; font-size:0.78rem; font-weight:600; padding:6px 11px;
+    border:1px solid var(--line); background:transparent; color:var(--muted);
+    border-radius:7px; cursor:pointer;
+  }
+  .range-picker button:hover { color:var(--ink); border-color:var(--accent); }
+  .range-picker button.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .chart-wrap { position:relative; }
+  canvas { width: 100%; display:block; cursor:crosshair; }
+  .chart-tooltip {
+    position:absolute; pointer-events:none; opacity:0; transition:opacity .1s ease;
+    background:var(--ink); color:var(--bg); font-size:0.78rem; line-height:1.4;
+    padding:6px 10px; border-radius:6px; white-space:nowrap; transform:translate(-50%, -100%);
+    z-index:5;
+  }
+  .chart-tooltip strong { font-variant-numeric: tabular-nums; }
   .lang-row { display:flex; align-items:center; gap:10px; margin: 8px 0; font-size:0.9rem; }
   .lang-row .name { width:90px; flex-shrink:0; color: var(--muted); }
   .lang-row .bar-track { flex:1; background: var(--accent-soft); border-radius: 6px; height: 10px; overflow:hidden; }
@@ -65,8 +83,14 @@
   </div>
 
   <div class="wide card">
-    <div class="label" style="color:var(--muted);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px;">Visits per day</div>
-    <canvas id="visitsChart" height="220"></canvas>
+    <div class="panel-head">
+      <div class="panel-label" id="chartLabel">Visits</div>
+      <div class="range-picker" id="rangePicker"></div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="visitsChart" height="220"></canvas>
+      <div class="chart-tooltip" id="chartTooltip"></div>
+    </div>
   </div>
 
   <div class="wide card">
@@ -78,11 +102,26 @@
 <script>
 const LANG_NAMES = { en: "English", nl: "Dutch", de: "German", fr: "French", es: "Spanish", it: "Italian", pt: "Portuguese", unknown: "Unknown" };
 
-async function fetchStats(password) {
+const RANGES = [
+  { key: "1h", label: "1H", sub: "Last hour" },
+  { key: "1d", label: "1D", sub: "Last 24 hours" },
+  { key: "7d", label: "1W", sub: "Last 7 days" },
+  { key: "30d", label: "1M", sub: "Last 30 days" },
+  { key: "90d", label: "3M", sub: "Last 3 months" },
+  { key: "180d", label: "6M", sub: "Last 6 months" },
+  { key: "365d", label: "1Y", sub: "Last 12 months" },
+];
+
+let currentRange = "30d";
+let currentPoints = []; // {x, y, bucket, count} of the last-drawn chart, for hover hit-testing
+let hoverBound = false;
+let lastData = null; // last fetched response, so resize can redraw without refetching
+
+async function fetchStats(password, range) {
   const res = await fetch("/.netlify/functions/stats", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ password, days: 30 }),
+    body: JSON.stringify({ password, range: range || currentRange }),
   });
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
@@ -91,21 +130,81 @@ async function fetchStats(password) {
   return res.json();
 }
 
+function buildRangePicker(onPick) {
+  const el = document.getElementById("rangePicker");
+  el.innerHTML = "";
+  RANGES.forEach((r) => {
+    const btn = document.createElement("button");
+    btn.textContent = r.label;
+    btn.className = r.key === currentRange ? "active" : "";
+    btn.addEventListener("click", () => onPick(r.key));
+    el.appendChild(btn);
+  });
+}
+
 function renderDashboard(data) {
+  lastData = data;
   document.getElementById("login").style.display = "none";
   document.getElementById("dashboard").style.display = "block";
 
+  const rangeMeta = RANGES.find((r) => r.key === data.range) || RANGES[3];
   document.getElementById("rangeSub").textContent =
-    "Last " + data.range_days + " days · generated " + new Date().toLocaleString();
+    rangeMeta.sub + " · generated " + new Date().toLocaleString();
+  document.getElementById("chartLabel").textContent =
+    "Visits per " + data.granularity;
   document.getElementById("statVisits").textContent = data.total_visits;
   document.getElementById("statClicks").textContent = data.commission_clicks;
   document.getElementById("statConv").textContent = data.conversion_rate + "%";
 
-  drawVisitsChart(data.daily_series);
+  buildRangePicker((key) => {
+    if (key === currentRange) return;
+    currentRange = key;
+    const pw = sessionStorage.getItem("onsNestAdminPw");
+    fetchStats(pw, key).then(renderDashboard).catch((e) => {
+      document.getElementById("err").textContent = "Could not load stats: " + e.message;
+    });
+  });
+
+  drawVisitsChart(data.series, data.granularity);
   drawLangBars(data.lang_counts);
 }
 
-function drawVisitsChart(daily) {
+// Formats a bucket key (shape depends on granularity) into a short axis
+// label and a longer tooltip label.
+function formatBucket(bucket, granularity) {
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  if (granularity === "minute") {
+    // YYYY-MM-DDTHH:MM
+    const time = bucket.slice(11, 16);
+    const d = new Date(bucket + ":00Z");
+    return { axis: time, tooltip: MONTHS[d.getUTCMonth()] + " " + d.getUTCDate() + ", " + time };
+  }
+  if (granularity === "hour") {
+    // YYYY-MM-DDTHH
+    const d = new Date(bucket + ":00:00Z");
+    const hh = bucket.slice(11, 13) + ":00";
+    return { axis: hh, tooltip: MONTHS[d.getUTCMonth()] + " " + d.getUTCDate() + ", " + hh };
+  }
+  if (granularity === "day") {
+    const d = new Date(bucket + "T00:00:00Z");
+    const short = bucket.slice(5); // MM-DD
+    return { axis: short, tooltip: MONTHS[d.getUTCMonth()] + " " + d.getUTCDate() };
+  }
+  if (granularity === "week") {
+    const d = new Date(bucket + "T00:00:00Z");
+    const short = bucket.slice(5);
+    return { axis: short, tooltip: "Week of " + MONTHS[d.getUTCMonth()] + " " + d.getUTCDate() };
+  }
+  if (granularity === "month") {
+    // YYYY-MM
+    const [y, m] = bucket.split("-");
+    const label = MONTHS[parseInt(m, 10) - 1] + " " + y;
+    return { axis: MONTHS[parseInt(m, 10) - 1], tooltip: label };
+  }
+  return { axis: bucket, tooltip: bucket };
+}
+
+function drawVisitsChart(series, granularity) {
   const canvas = document.getElementById("visitsChart");
   const dpr = window.devicePixelRatio || 1;
   const cssW = canvas.clientWidth || 1000, cssH = 220;
@@ -115,50 +214,107 @@ function drawVisitsChart(daily) {
 
   const pad = { l: 40, r: 16, t: 16, b: 28 };
   const w = cssW - pad.l - pad.r, h = cssH - pad.t - pad.b;
-  const values = daily.map((d) => d.count);
+  const values = series.map((d) => d.count);
   const maxV = Math.max(1, ...values);
   const style = getComputedStyle(document.documentElement);
   const muted = style.getPropertyValue("--muted").trim() || "#888";
   const accent = style.getPropertyValue("--accent").trim() || "#b5762c";
   const line = style.getPropertyValue("--line").trim() || "#ddd";
 
-  ctx.strokeStyle = line; ctx.lineWidth = 1;
-  for (let i = 0; i <= 4; i++) {
-    const y = pad.t + h - (h * i / 4);
-    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + w, y); ctx.stroke();
-    ctx.fillStyle = muted; ctx.font = "11px sans-serif"; ctx.textAlign = "right";
-    ctx.fillText(Math.round(maxV * i / 4), pad.l - 8, y + 4);
-  }
+  currentPoints = [];
 
-  if (values.length) {
+  function drawBase(highlightIdx) {
+    ctx.clearRect(0, 0, cssW, cssH);
+
+    ctx.strokeStyle = line; ctx.lineWidth = 1;
+    for (let i = 0; i <= 4; i++) {
+      const y = pad.t + h - (h * i / 4);
+      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + w, y); ctx.stroke();
+      ctx.fillStyle = muted; ctx.font = "11px sans-serif"; ctx.textAlign = "right";
+      ctx.fillText(Math.round(maxV * i / 4), pad.l - 8, y + 4);
+    }
+
+    if (!values.length) {
+      ctx.fillStyle = muted; ctx.textAlign = "center";
+      ctx.fillText("No data yet", pad.l + w / 2, pad.t + h / 2);
+      return;
+    }
+
     ctx.beginPath();
     ctx.strokeStyle = accent; ctx.lineWidth = 2;
-    daily.forEach((d, i) => {
-      const x = pad.l + (w * i / Math.max(1, daily.length - 1));
+    series.forEach((d, i) => {
+      const x = pad.l + (w * i / Math.max(1, series.length - 1));
       const y = pad.t + h - (h * d.count / maxV);
       i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     });
     ctx.stroke();
 
-    ctx.fillStyle = accent;
-    daily.forEach((d, i) => {
-      const x = pad.l + (w * i / Math.max(1, daily.length - 1));
+    series.forEach((d, i) => {
+      const x = pad.l + (w * i / Math.max(1, series.length - 1));
       const y = pad.t + h - (h * d.count / maxV);
-      ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2); ctx.fill();
+      if (i === highlightIdx) {
+        ctx.strokeStyle = accent; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, pad.t + h); ctx.stroke();
+        ctx.fillStyle = accent;
+        ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = style.getPropertyValue("--card").trim() || "#fff";
+        ctx.lineWidth = 2; ctx.stroke();
+      } else {
+        ctx.fillStyle = accent;
+        ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2); ctx.fill();
+      }
     });
 
     ctx.fillStyle = muted; ctx.font = "10px sans-serif"; ctx.textAlign = "center";
-    const step = Math.max(1, Math.ceil(daily.length / 7));
-    daily.forEach((d, i) => {
+    const step = Math.max(1, Math.ceil(series.length / 7));
+    series.forEach((d, i) => {
       if (i % step === 0) {
-        const x = pad.l + (w * i / Math.max(1, daily.length - 1));
-        ctx.fillText((d.date || "").slice(5), x, pad.t + h + 18);
+        const x = pad.l + (w * i / Math.max(1, series.length - 1));
+        ctx.fillText(formatBucket(d.bucket, granularity).axis, x, pad.t + h + 18);
       }
     });
-  } else {
-    ctx.fillStyle = muted; ctx.textAlign = "center";
-    ctx.fillText("No data yet", pad.l + w / 2, pad.t + h / 2);
   }
+
+  drawBase(-1);
+
+  series.forEach((d, i) => {
+    const x = pad.l + (w * i / Math.max(1, series.length - 1));
+    const y = pad.t + h - (h * d.count / maxV);
+    currentPoints.push({ x, y, bucket: d.bucket, count: d.count });
+  });
+
+  const tooltip = document.getElementById("chartTooltip");
+
+  if (!hoverBound) {
+    // bound once; reads currentPoints/drawBase-equivalent fresh via closures
+    // stored on the canvas element itself so re-renders stay in sync
+    canvas.addEventListener("mousemove", (e) => {
+      if (!canvas._drawBase || !canvas._points.length) return;
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      let nearest = 0, best = Infinity;
+      canvas._points.forEach((p, i) => {
+        const dist = Math.abs(p.x - mx);
+        if (dist < best) { best = dist; nearest = i; }
+      });
+      canvas._drawBase(nearest);
+      const p = canvas._points[nearest];
+      const fmt = formatBucket(p.bucket, canvas._granularity);
+      tooltip.innerHTML = fmt.tooltip + "<br><strong>" + p.count + "</strong> visit" + (p.count === 1 ? "" : "s");
+      tooltip.style.left = p.x + "px";
+      tooltip.style.top = (p.y - 10) + "px";
+      tooltip.style.opacity = "1";
+    });
+    canvas.addEventListener("mouseleave", () => {
+      if (canvas._drawBase) canvas._drawBase(-1);
+      tooltip.style.opacity = "0";
+    });
+    hoverBound = true;
+  }
+
+  canvas._drawBase = drawBase;
+  canvas._points = currentPoints;
+  canvas._granularity = granularity;
 }
 
 function drawLangBars(langCounts) {
@@ -187,7 +343,7 @@ async function trySignIn() {
   const err = document.getElementById("err");
   err.textContent = "";
   try {
-    const data = await fetchStats(pw);
+    const data = await fetchStats(pw, currentRange);
     sessionStorage.setItem("onsNestAdminPw", pw);
     renderDashboard(data);
   } catch (e) {
@@ -198,10 +354,22 @@ async function trySignIn() {
 document.getElementById("signIn").addEventListener("click", trySignIn);
 document.getElementById("pw").addEventListener("keydown", (e) => { if (e.key === "Enter") trySignIn(); });
 
+// The chart's pixel layout depends on the canvas's rendered width, so a
+// resize needs a redraw -- but not a refetch, the data hasn't changed.
+let resizeTimer = null;
+window.addEventListener("resize", () => {
+  const dashboardVisible = document.getElementById("dashboard").style.display !== "none";
+  if (!dashboardVisible || !lastData) return;
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    drawVisitsChart(lastData.series, lastData.granularity);
+  }, 150);
+});
+
 // Auto sign-in if a password was already entered this browser tab session.
 const savedPw = sessionStorage.getItem("onsNestAdminPw");
 if (savedPw) {
-  fetchStats(savedPw).then(renderDashboard).catch(() => sessionStorage.removeItem("onsNestAdminPw"));
+  fetchStats(savedPw, currentRange).then(renderDashboard).catch(() => sessionStorage.removeItem("onsNestAdminPw"));
 }
 </script>
 </body>

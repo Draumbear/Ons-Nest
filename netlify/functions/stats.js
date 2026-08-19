@@ -9,6 +9,39 @@ function timingSafeEqual(a, b) {
   return diff === 0;
 }
 
+// Each range maps to how far back to look, and how coarsely to bucket
+// points so the chart stays readable (an hour of per-minute points, a
+// year of per-month points, etc).
+const RANGES = {
+  "1h": { ms: 60 * 60 * 1000, granularity: "minute" },
+  "1d": { ms: 24 * 60 * 60 * 1000, granularity: "hour" },
+  "7d": { ms: 7 * 24 * 60 * 60 * 1000, granularity: "day" },
+  "30d": { ms: 30 * 24 * 60 * 60 * 1000, granularity: "day" },
+  "90d": { ms: 90 * 24 * 60 * 60 * 1000, granularity: "week" },
+  "180d": { ms: 180 * 24 * 60 * 60 * 1000, granularity: "week" },
+  "365d": { ms: 365 * 24 * 60 * 60 * 1000, granularity: "month" },
+};
+
+function weekStartKey(d) {
+  const date = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  const day = date.getUTCDay();
+  const diff = (day === 0 ? -6 : 1) - day; // shift back to Monday
+  date.setUTCDate(date.getUTCDate() + diff);
+  return date.toISOString().slice(0, 10);
+}
+
+function bucketKey(date, granularity) {
+  const iso = date.toISOString();
+  switch (granularity) {
+    case "minute": return iso.slice(0, 16); // YYYY-MM-DDTHH:MM
+    case "hour": return iso.slice(0, 13); // YYYY-MM-DDTHH
+    case "day": return iso.slice(0, 10); // YYYY-MM-DD
+    case "week": return weekStartKey(date); // YYYY-MM-DD of Monday
+    case "month": return iso.slice(0, 7); // YYYY-MM
+    default: return iso.slice(0, 10);
+  }
+};
+
 export default async (request) => {
   if (request.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
@@ -36,11 +69,12 @@ export default async (request) => {
     });
   }
 
-  const days = Math.min(Math.max(parseInt(body.days, 10) || 30, 1), 90);
-  const since = Date.now() - days * 24 * 60 * 60 * 1000;
+  const range = RANGES[body.range] ? body.range : "30d";
+  const { ms, granularity } = RANGES[range];
+  const since = Date.now() - ms;
 
   const store = getStore("ons-nest-analytics");
-  const dailyCounts = {};
+  const bucketCounts = {};
   const langCounts = {};
   let totalVisits = 0;
   let commissionClicks = 0;
@@ -57,30 +91,32 @@ export default async (request) => {
       const data = await store.get(item.key, { type: "json" });
       if (!data) continue;
 
-      const day = data.ts ? data.ts.slice(0, 10) : new Date(ts).toISOString().slice(0, 10);
+      const eventDate = data.ts ? new Date(data.ts) : new Date(ts);
+      const bucket = bucketKey(eventDate, granularity);
 
       if (data.event === "commission-click") {
         commissionClicks++;
       } else {
         totalVisits++;
-        dailyCounts[day] = (dailyCounts[day] || 0) + 1;
+        bucketCounts[bucket] = (bucketCounts[bucket] || 0) + 1;
         const lang = data.lang || "unknown";
         langCounts[lang] = (langCounts[lang] || 0) + 1;
       }
     }
   } while (cursor);
 
-  const dailySeries = Object.entries(dailyCounts)
-    .map(([date, count]) => ({ date, count }))
-    .sort((a, b) => (a.date < b.date ? -1 : 1));
+  const series = Object.entries(bucketCounts)
+    .map(([bucket, count]) => ({ bucket, count }))
+    .sort((a, b) => (a.bucket < b.bucket ? -1 : 1));
 
   return new Response(
     JSON.stringify({
-      range_days: days,
+      range,
+      granularity,
       total_visits: totalVisits,
       commission_clicks: commissionClicks,
       conversion_rate: totalVisits ? Math.round((commissionClicks / totalVisits) * 1000) / 10 : 0,
-      daily_series: dailySeries,
+      series,
       lang_counts: langCounts,
     }),
     { status: 200, headers: { "content-type": "application/json" } }
