@@ -778,6 +778,47 @@
   }
   .rules-note p{margin:0; color:var(--ink-soft); font-size:0.86rem;}
 
+  /* ---------- faq ---------- */
+  .faq-list{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .faq-item{background:var(--paper);}
+  .faq-item summary{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:16px 20px;
+    cursor:pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight:600;
+    font-size:0.98rem;
+    color:var(--ink);
+    list-style:none;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+";
+    font-size:1.3rem;
+    line-height:1;
+    color:var(--sea);
+    flex:0 0 auto;
+    transition:transform .2s ease;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{
+    margin:0;
+    padding:0 20px 18px;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    max-width:65ch;
+  }
+  .faq-item p a{color:var(--sea);}
+
   /* ---------- cta band ---------- */
   /* Deliberately fixed dark surface, not theme tokens, so it reads the same in light and dark mode. */
   .band{
@@ -922,6 +963,7 @@
       <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Maison</a>
       <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">&Eacute;quipements</a>
       <a href="#location" data-nav="location" data-i18n="nav_location">Situation</a>
+      <a href="#faq" data-nav="faq" data-i18n="nav_faq">FAQ</a>
     </div>
     <details class="nav-hamburger" id="navHamburger">
       <summary aria-label="Menu">
@@ -932,6 +974,7 @@
         <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Maison</a>
         <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">&Eacute;quipements</a>
         <a href="#location" data-nav="location" data-i18n="nav_location">Situation</a>
+        <a href="#faq" data-nav="faq" data-i18n="nav_faq">FAQ</a>
       </div>
     </details>
     <details class="lang-switch sans"><summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.5 3 14.5 0 18c-3-3.5-3-14.5 0-18z"/></svg><span class="label">FR</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><a href="https://ons-nest.be/">Nederlands <span class="code">NL</span></a><span class="current">Français <span class="code">FR</span></span><a href="https://ons-nest.be/de/">Deutsch <span class="code">DE</span></a><a href="https://ons-nest.be/en/">English <span class="code">EN</span></a></div></details>
@@ -993,7 +1036,7 @@
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom1-ensuite.jpg" alt="Chambre 1, avec une armoire encastr&eacute;e et une porte vers sa salle de bain priv&eacute;e." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Chambre 1 &middot; salle de bain priv&eacute;e</span></button></figure>
       <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="Salle de bain priv&eacute;e avec une cabine de douche en verre incurv&eacute;." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Salle de bain priv&eacute;e</span></button></figure>
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom2.jpg" alt="Chambre 2, avec deux lits jumeaux rapproch&eacute;s sous une fen&ecirc;tre de toit en pente." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Chambre 2</span></button></figure>
-      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Chambre 3, une chambre d'enfants avec un lit superpos&eacute; en bois." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Chambre 3 &middot; lit superpos&eacute;</span></button></figure>
+      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Chambre 3, une chambre d'enfants avec un lit superpos&eacute; en bois." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Chambre d'enfants &middot; lit superpos&eacute;</span></button></figure>
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Salle de bain avec baignoire, douche et murs carrel&eacute;s." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Salle de bain</span></button></figure>
     </div>
   </section>
@@ -1047,7 +1090,7 @@
         <ul>
           <li class="has-icon" data-i18n="sleep_bedroom1"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Chambre 1</b>&nbsp;: lit double (2&times;90cm) avec salle de bain privée</span></li>
           <li class="has-icon" data-i18n="sleep_bedroom2"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Chambre 2</b>&nbsp;: lit double (2&times;80cm)</span></li>
-          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Chambre 3</b>&nbsp;: lit superpos&eacute; (2&times;90cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Chambre d'enfants</b>&nbsp;: lit superpos&eacute; (2&times;90cm)</span></li>
           <li class="has-icon" data-i18n="sleep_cot"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="9" width="14" height="7" rx="1"/><path d="M5 16v3M19 16v3M7 9V6M10.5 9V6M14 9V6M17 9V6"/></svg><span><b>Lit b&eacute;b&eacute;</b> sur demande</span></li>
         </ul>
       </div>
@@ -1118,6 +1161,41 @@
     </div>
   </section>
 
+  <section id="faq">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker-small sans" data-i18n="faq_kicker">Pratique</span>
+        <h2 data-i18n="faq_h2">Questions fr&eacute;quentes.</h2>
+      </div>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q1">&Agrave; quelle heure sont le check-in et le check-out&nbsp;?</summary>
+        <p class="sans" data-i18n="faq_a1">Le check-in est &agrave; partir de 15h00, le check-out avant 10h00. Les instructions d'arriv&eacute;e exactes vous sont envoy&eacute;es lors de la r&eacute;servation sur <a class="interhome-link" href="https://myrent.interhome.com/fr/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q2">Le linge de lit et les serviettes sont-ils inclus&nbsp;?</summary>
+        <p class="sans" data-i18n="faq_a2">Le linge de lit est inclus. Les serviettes ne sont pas incluses &mdash; merci d'apporter les v&ocirc;tres.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q3">Quelle est la dur&eacute;e minimale de s&eacute;jour, et quelle est la politique d'annulation ou de caution&nbsp;?</summary>
+        <p class="sans" data-i18n="faq_a3">Ces conditions sont enti&egrave;rement g&eacute;r&eacute;es par Interhome, notre partenaire de r&eacute;servation. Consultez les conditions actuelles lors de la r&eacute;servation sur <a class="interhome-link" href="https://myrent.interhome.com/fr/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q4">Les animaux ou les groupes de jeunes sont-ils autoris&eacute;s&nbsp;?</summary>
+        <p class="sans" data-i18n="faq_a4">Non. Ons Nest est une maison familiale calme&nbsp;: pas d'animaux, ni de groupes de jeunes.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q5">Y a-t-il le wifi gratuit et un parking&nbsp;?</summary>
+        <p class="sans" data-i18n="faq_a5">Oui&nbsp;: wifi gratuit dans toute la maison, et un parking pour une voiture sur place.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q6">O&ugrave; puis-je voir les prix et disponibilit&eacute;s actuels&nbsp;?</summary>
+        <p class="sans" data-i18n="faq_a6">Les prix, disponibilit&eacute;s et r&eacute;servations passent enti&egrave;rement par <a class="interhome-link" href="https://myrent.interhome.com/fr/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+    </div>
+  </section>
+
   <section id="book">
     <div class="band reveal">
       <h2 data-i18n="cta_h2">Pr&ecirc;t pour la c&ocirc;te&nbsp;?</h2>
@@ -1177,7 +1255,7 @@
 
   /* active nav link */
   var navLinks = document.querySelectorAll("[data-nav]");
-  var sections = ["story","gallery","amenities","location"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var sections = ["story","gallery","amenities","location","faq"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
   if("IntersectionObserver" in window && sections.length){
     var navObs = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){

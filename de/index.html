@@ -778,6 +778,47 @@
   }
   .rules-note p{margin:0; color:var(--ink-soft); font-size:0.86rem;}
 
+  /* ---------- faq ---------- */
+  .faq-list{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .faq-item{background:var(--paper);}
+  .faq-item summary{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:16px 20px;
+    cursor:pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight:600;
+    font-size:0.98rem;
+    color:var(--ink);
+    list-style:none;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+";
+    font-size:1.3rem;
+    line-height:1;
+    color:var(--sea);
+    flex:0 0 auto;
+    transition:transform .2s ease;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{
+    margin:0;
+    padding:0 20px 18px;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    max-width:65ch;
+  }
+  .faq-item p a{color:var(--sea);}
+
   /* ---------- cta band ---------- */
   /* Deliberately fixed dark surface, not theme tokens, so it reads the same in light and dark mode. */
   .band{
@@ -922,6 +963,7 @@
       <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Haus</a>
       <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Ausstattung</a>
       <a href="#location" data-nav="location" data-i18n="nav_location">Lage</a>
+      <a href="#faq" data-nav="faq" data-i18n="nav_faq">FAQ</a>
     </div>
     <details class="nav-hamburger" id="navHamburger">
       <summary aria-label="Menu">
@@ -932,6 +974,7 @@
         <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Haus</a>
         <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Ausstattung</a>
         <a href="#location" data-nav="location" data-i18n="nav_location">Lage</a>
+        <a href="#faq" data-nav="faq" data-i18n="nav_faq">FAQ</a>
       </div>
     </details>
     <details class="lang-switch sans"><summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.5 3 14.5 0 18c-3-3.5-3-14.5 0-18z"/></svg><span class="label">DE</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><a href="https://ons-nest.be/">Nederlands <span class="code">NL</span></a><a href="https://ons-nest.be/fr/">Français <span class="code">FR</span></a><span class="current">Deutsch <span class="code">DE</span></span><a href="https://ons-nest.be/en/">English <span class="code">EN</span></a></div></details>
@@ -993,7 +1036,7 @@
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom1-ensuite.jpg" alt="Schlafzimmer 1, mit Einbauschrank und T&uuml;r zum eigenen Badezimmer." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Schlafzimmer 1 &middot; eigenes Bad</span></button></figure>
       <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="Eigenes Badezimmer mit geschwungener Glas-Duschkabine." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Eigenes Badezimmer</span></button></figure>
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom2.jpg" alt="Schlafzimmer 2, mit zwei zusammengeschobenen Betten unter einem Dachfenster." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Schlafzimmer 2</span></button></figure>
-      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Schlafzimmer 3, ein Kinderzimmer mit einem h&ouml;lzernen Stockbett." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Schlafzimmer 3 &middot; Stockbettzimmer</span></button></figure>
+      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Schlafzimmer 3, ein Kinderzimmer mit einem h&ouml;lzernen Stockbett." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Kinderzimmer &middot; Stockbett</span></button></figure>
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Badezimmer mit Badewanne, Dusche und geflie&szlig;ten W&auml;nden." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Badezimmer</span></button></figure>
     </div>
   </section>
@@ -1047,7 +1090,7 @@
         <ul>
           <li class="has-icon" data-i18n="sleep_bedroom1"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Schlafzimmer 1</b>: Doppelbett (2&times;90cm) mit eigenem Bad</span></li>
           <li class="has-icon" data-i18n="sleep_bedroom2"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Schlafzimmer 2</b>: Doppelbett (2&times;80cm)</span></li>
-          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Schlafzimmer 3</b>: Stockbett (2&times;90cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Kinderzimmer</b>: Stockbett (2&times;90cm)</span></li>
           <li class="has-icon" data-i18n="sleep_cot"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="9" width="14" height="7" rx="1"/><path d="M5 16v3M19 16v3M7 9V6M10.5 9V6M14 9V6M17 9V6"/></svg><span><b>Babybett</b> auf Anfrage</span></li>
         </ul>
       </div>
@@ -1118,6 +1161,41 @@
     </div>
   </section>
 
+  <section id="faq">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker-small sans" data-i18n="faq_kicker">Praktisches</span>
+        <h2 data-i18n="faq_h2">H&auml;ufige Fragen.</h2>
+      </div>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q1">Wann sind Check-in und Check-out?</summary>
+        <p class="sans" data-i18n="faq_a1">Check-in ist ab 15:00 Uhr, Check-out bis 10:00 Uhr. Die genauen Ankunftshinweise erhalten Sie bei der Buchung &uuml;ber <a class="interhome-link" href="https://myrent.interhome.com/de/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q2">Sind Bettw&auml;sche und Handt&uuml;cher inbegriffen?</summary>
+        <p class="sans" data-i18n="faq_a2">Bettw&auml;sche ist inbegriffen. Handt&uuml;cher sind nicht inbegriffen &mdash; bitte eigene mitbringen.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q3">Wie lang ist der Mindestaufenthalt, und wie sieht die Stornierungs- oder Kautionsregelung aus?</summary>
+        <p class="sans" data-i18n="faq_a3">Diese Bedingungen werden vollst&auml;ndig von Interhome, unserem Buchungspartner, festgelegt. Die aktuellen Bedingungen finden Sie bei der Buchung &uuml;ber <a class="interhome-link" href="https://myrent.interhome.com/de/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q4">Sind Haustiere oder Jugendgruppen erlaubt?</summary>
+        <p class="sans" data-i18n="faq_a4">Nein. Ons Nest ist ein ruhiges Familienhaus: keine Haustiere und keine Jugendgruppen.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q5">Gibt es kostenloses WLAN und einen Parkplatz?</summary>
+        <p class="sans" data-i18n="faq_a5">Ja: kostenloses WLAN im ganzen Haus und ein Parkplatz f&uuml;r ein Auto direkt am Haus.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q6">Wo sehe ich aktuelle Preise und Verf&uuml;gbarkeit?</summary>
+        <p class="sans" data-i18n="faq_a6">Preise, Verf&uuml;gbarkeit und Buchung laufen vollst&auml;ndig &uuml;ber <a class="interhome-link" href="https://myrent.interhome.com/de/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+    </div>
+  </section>
+
   <section id="book">
     <div class="band reveal">
       <h2 data-i18n="cta_h2">Bereit f&uuml;r die K&uuml;ste?</h2>
@@ -1177,7 +1255,7 @@
 
   /* active nav link */
   var navLinks = document.querySelectorAll("[data-nav]");
-  var sections = ["story","gallery","amenities","location"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var sections = ["story","gallery","amenities","location","faq"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
   if("IntersectionObserver" in window && sections.length){
     var navObs = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){

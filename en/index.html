@@ -778,6 +778,47 @@
   }
   .rules-note p{margin:0; color:var(--ink-soft); font-size:0.86rem;}
 
+  /* ---------- faq ---------- */
+  .faq-list{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .faq-item{background:var(--paper);}
+  .faq-item summary{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:16px 20px;
+    cursor:pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight:600;
+    font-size:0.98rem;
+    color:var(--ink);
+    list-style:none;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+";
+    font-size:1.3rem;
+    line-height:1;
+    color:var(--sea);
+    flex:0 0 auto;
+    transition:transform .2s ease;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{
+    margin:0;
+    padding:0 20px 18px;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    max-width:65ch;
+  }
+  .faq-item p a{color:var(--sea);}
+
   /* ---------- cta band ---------- */
   /* Deliberately fixed dark surface, not theme tokens, so it reads the same in light and dark mode. */
   .band{
@@ -922,6 +963,7 @@
       <a href="#gallery" data-nav="gallery" data-i18n="nav_house">House</a>
       <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Facilities</a>
       <a href="#location" data-nav="location" data-i18n="nav_location">Location</a>
+      <a href="#faq" data-nav="faq" data-i18n="nav_faq">FAQ</a>
     </div>
     <details class="nav-hamburger" id="navHamburger">
       <summary aria-label="Menu">
@@ -932,6 +974,7 @@
         <a href="#gallery" data-nav="gallery" data-i18n="nav_house">House</a>
         <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Facilities</a>
         <a href="#location" data-nav="location" data-i18n="nav_location">Location</a>
+        <a href="#faq" data-nav="faq" data-i18n="nav_faq">FAQ</a>
       </div>
     </details>
     <details class="lang-switch sans"><summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.5 3 14.5 0 18c-3-3.5-3-14.5 0-18z"/></svg><span class="label">EN</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><a href="https://ons-nest.be/">Nederlands <span class="code">NL</span></a><a href="https://ons-nest.be/fr/">Français <span class="code">FR</span></a><a href="https://ons-nest.be/de/">Deutsch <span class="code">DE</span></a><span class="current">English <span class="code">EN</span></span></div></details>
@@ -993,7 +1036,7 @@
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom1-ensuite.jpg" alt="Bedroom 1 with a built-in wardrobe and a doorway to its en-suite bathroom." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Bedroom 1 &middot; en-suite</span></button></figure>
       <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="En-suite shower room with a curved glass cabin shower." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">En-suite bathroom</span></button></figure>
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom2.jpg" alt="Bedroom 2, with twin beds pushed together beneath a sloped skylight." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Bedroom 2</span></button></figure>
-      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Bedroom 3, a children's room with a wooden bunk bed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Bedroom 3 &middot; bunk room</span></button></figure>
+      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Bedroom 3, a children's room with a wooden bunk bed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Children's room &middot; bunk bed</span></button></figure>
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Family bathroom with bathtub, shower and tiled walls." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Family bathroom</span></button></figure>
     </div>
   </section>
@@ -1047,7 +1090,7 @@
         <ul>
           <li class="has-icon" data-i18n="sleep_bedroom1"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Bedroom 1</b>: double bed (2&times;90cm) with en-suite bathroom</span></li>
           <li class="has-icon" data-i18n="sleep_bedroom2"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Bedroom 2</b>: double bed (2&times;80cm)</span></li>
-          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Bedroom 3</b>: bunk bed (2&times;90cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Children's room</b>: bunk bed (2&times;90cm)</span></li>
           <li class="has-icon" data-i18n="sleep_cot"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="9" width="14" height="7" rx="1"/><path d="M5 16v3M19 16v3M7 9V6M10.5 9V6M14 9V6M17 9V6"/></svg><span><b>Baby cot</b> available on request</span></li>
         </ul>
       </div>
@@ -1118,6 +1161,41 @@
     </div>
   </section>
 
+  <section id="faq">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker-small sans" data-i18n="faq_kicker">Practical</span>
+        <h2 data-i18n="faq_h2">Frequently asked questions.</h2>
+      </div>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q1">What time is check-in and check-out?</summary>
+        <p class="sans" data-i18n="faq_a1">Check-in is from 15:00, check-out until 10:00. Exact arrival instructions are sent when you book via <a class="interhome-link" href="https://myrent.interhome.com/en/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q2">Are bed linens and towels included?</summary>
+        <p class="sans" data-i18n="faq_a2">Bed linens are included. Towels are not included &mdash; please bring your own.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q3">What's the minimum stay, and what's the cancellation or deposit policy?</summary>
+        <p class="sans" data-i18n="faq_a3">These terms are set entirely by Interhome, our booking partner. See the current terms when you book via <a class="interhome-link" href="https://myrent.interhome.com/en/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q4">Are pets or youth groups allowed?</summary>
+        <p class="sans" data-i18n="faq_a4">No. Ons Nest is a quiet family house: no pets and no youth groups.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q5">Is there free wifi and parking?</summary>
+        <p class="sans" data-i18n="faq_a5">Yes: free wifi throughout the house, and parking for one car at the property.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q6">Where can I see current prices and availability?</summary>
+        <p class="sans" data-i18n="faq_a6">Prices, availability and booking are all handled via <a class="interhome-link" href="https://myrent.interhome.com/en/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+    </div>
+  </section>
+
   <section id="book">
     <div class="band reveal">
       <h2 data-i18n="cta_h2">Ready for the coast?</h2>
@@ -1177,7 +1255,7 @@
 
   /* active nav link */
   var navLinks = document.querySelectorAll("[data-nav]");
-  var sections = ["story","gallery","amenities","location"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var sections = ["story","gallery","amenities","location","faq"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
   if("IntersectionObserver" in window && sections.length){
     var navObs = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){

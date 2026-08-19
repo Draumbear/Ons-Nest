@@ -778,6 +778,47 @@
   }
   .rules-note p{margin:0; color:var(--ink-soft); font-size:0.86rem;}
 
+  /* ---------- faq ---------- */
+  .faq-list{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .faq-item{background:var(--paper);}
+  .faq-item summary{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:16px 20px;
+    cursor:pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight:600;
+    font-size:0.98rem;
+    color:var(--ink);
+    list-style:none;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+";
+    font-size:1.3rem;
+    line-height:1;
+    color:var(--sea);
+    flex:0 0 auto;
+    transition:transform .2s ease;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{
+    margin:0;
+    padding:0 20px 18px;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    max-width:65ch;
+  }
+  .faq-item p a{color:var(--sea);}
+
   /* ---------- cta band ---------- */
   /* Deliberately fixed dark surface, not theme tokens, so it reads the same in light and dark mode. */
   .band{
@@ -922,6 +963,7 @@
       <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Huis</a>
       <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Voorzieningen</a>
       <a href="#location" data-nav="location" data-i18n="nav_location">Ligging</a>
+      <a href="#faq" data-nav="faq" data-i18n="nav_faq">FAQ</a>
     </div>
     <details class="nav-hamburger" id="navHamburger">
       <summary aria-label="Menu">
@@ -932,6 +974,7 @@
         <a href="#gallery" data-nav="gallery" data-i18n="nav_house">Huis</a>
         <a href="#amenities" data-nav="amenities" data-i18n="nav_facilities">Voorzieningen</a>
         <a href="#location" data-nav="location" data-i18n="nav_location">Ligging</a>
+        <a href="#faq" data-nav="faq" data-i18n="nav_faq">FAQ</a>
       </div>
     </details>
     <details class="lang-switch sans"><summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.5 3 14.5 0 18c-3-3.5-3-14.5 0-18z"/></svg><span class="label">NL</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><span class="current">Nederlands <span class="code">NL</span></span><a href="https://ons-nest.be/fr/">Français <span class="code">FR</span></a><a href="https://ons-nest.be/de/">Deutsch <span class="code">DE</span></a><a href="https://ons-nest.be/en/">English <span class="code">EN</span></a></div></details>
@@ -993,7 +1036,7 @@
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom1-ensuite.jpg" alt="Slaapkamer 1, met een inbouwkast en een deur naar de eigen badkamer." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Slaapkamer 1 &middot; eigen badkamer</span></button></figure>
       <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/ensuite-bathroom.jpg" alt="Eigen badkamer met een gebogen glazen douchecabine." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Eigen badkamer</span></button></figure>
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom2.jpg" alt="Slaapkamer 2, met twee bedden tegen elkaar onder een hellend dakraam." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Slaapkamer 2</span></button></figure>
-      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Slaapkamer 3, een kinderkamer met een houten stapelbed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Slaapkamer 3 &middot; stapelbedkamer</span></button></figure>
+      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bedroom3-bunks.jpg" alt="Slaapkamer 3, een kinderkamer met een houten stapelbed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Kinderkamer &middot; stapelbed</span></button></figure>
       <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" src="/images/bathroom.jpg" alt="Badkamer met ligbad, douche en betegelde muren." data-i18n-alt="gal_bathroom_alt"><span class="cap sans" data-i18n="gal_bathroom_cap">Badkamer</span></button></figure>
     </div>
   </section>
@@ -1047,7 +1090,7 @@
         <ul>
           <li class="has-icon" data-i18n="sleep_bedroom1"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Slaapkamer 1</b>: tweepersoonsbed (2&times;90cm) met eigen badkamer</span></li>
           <li class="has-icon" data-i18n="sleep_bedroom2"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17v3M22 17v3"/><path d="M4 11V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M13 11V8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3"/></svg><span><b>Slaapkamer 2</b>: tweepersoonsbed (2&times;80cm)</span></li>
-          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Slaapkamer 3</b>: stapelbed (2&times;90cm)</span></li>
+          <li class="has-icon" data-i18n="sleep_bedroom3"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v18M20 3v18"/><rect x="4" y="6" width="16" height="4" rx="1"/><rect x="4" y="14" width="16" height="4" rx="1"/></svg><span><b>Kinderkamer</b>: stapelbed (2&times;90cm)</span></li>
           <li class="has-icon" data-i18n="sleep_cot"><svg class="amen-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="9" width="14" height="7" rx="1"/><path d="M5 16v3M19 16v3M7 9V6M10.5 9V6M14 9V6M17 9V6"/></svg><span><b>Kinderbedje</b> op aanvraag</span></li>
         </ul>
       </div>
@@ -1118,6 +1161,41 @@
     </div>
   </section>
 
+  <section id="faq">
+    <div class="section-head reveal">
+      <div>
+        <span class="kicker-small sans" data-i18n="faq_kicker">Praktisch</span>
+        <h2 data-i18n="faq_h2">Veelgestelde vragen.</h2>
+      </div>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q1">Hoe laat is de check-in en check-out?</summary>
+        <p class="sans" data-i18n="faq_a1">Check-in is vanaf 15:00 uur, check-out tot 10:00 uur. Exacte aankomstinstructies ontvang je bij het boeken via <a class="interhome-link" href="https://myrent.interhome.com/nl/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q2">Zijn bedlinnen en handdoeken inbegrepen?</summary>
+        <p class="sans" data-i18n="faq_a2">Bedlinnen is inbegrepen. Handdoeken zijn niet inbegrepen &mdash; breng je eigen handdoeken mee.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q3">Wat is de minimale verblijfsduur, en wat is het annulerings- en waarborgbeleid?</summary>
+        <p class="sans" data-i18n="faq_a3">Deze voorwaarden worden volledig beheerd door Interhome, onze boekingspartner. Bekijk de actuele voorwaarden bij het boeken via <a class="interhome-link" href="https://myrent.interhome.com/nl/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q4">Zijn huisdieren of jongerengroepen toegestaan?</summary>
+        <p class="sans" data-i18n="faq_a4">Nee. Ons Nest is een rustige gezinswoning: geen huisdieren en geen jongerengroepen.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q5">Is er gratis wifi en parking?</summary>
+        <p class="sans" data-i18n="faq_a5">Ja: gratis wifi in het hele huis, en parking voor &eacute;&eacute;n wagen bij de woning.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="sans" data-i18n="faq_q6">Waar zie ik de actuele prijzen en beschikbaarheid?</summary>
+        <p class="sans" data-i18n="faq_a6">Prijzen, beschikbaarheid en boeken verlopen volledig via <a class="interhome-link" href="https://myrent.interhome.com/nl/BE8420.355.1/" target="_blank" rel="noopener">Interhome</a>.</p>
+      </details>
+    </div>
+  </section>
+
   <section id="book">
     <div class="band reveal">
       <h2 data-i18n="cta_h2">Klaar voor de kust?</h2>
@@ -1177,7 +1255,7 @@
 
   /* active nav link */
   var navLinks = document.querySelectorAll("[data-nav]");
-  var sections = ["story","gallery","amenities","location"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var sections = ["story","gallery","amenities","location","faq"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
   if("IntersectionObserver" in window && sections.length){
     var navObs = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
