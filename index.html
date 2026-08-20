@@ -59,10 +59,15 @@
     {"@type": "LocationFeatureSpecification", "name": "Wi-Fi"},
     {"@type": "LocationFeatureSpecification", "name": "Private entrance"},
     {"@type": "LocationFeatureSpecification", "name": "Parking"},
+    {"@type": "LocationFeatureSpecification", "name": "Oven"},
+    {"@type": "LocationFeatureSpecification", "name": "Gas hob"},
     {"@type": "LocationFeatureSpecification", "name": "Dishwasher"},
+    {"@type": "LocationFeatureSpecification", "name": "Freezer"},
     {"@type": "LocationFeatureSpecification", "name": "Washing machine"},
+    {"@type": "LocationFeatureSpecification", "name": "Central heating"},
     {"@type": "LocationFeatureSpecification", "name": "TV"},
     {"@type": "LocationFeatureSpecification", "name": "Private terrace"},
+    {"@type": "LocationFeatureSpecification", "name": "2 separate toilets"},
     {"@type": "LocationFeatureSpecification", "name": "Non-smoking"}
   ],
   "numberOfRooms": 3,
@@ -439,9 +444,19 @@
   /* ---------- story ---------- */
   .story{
     display:grid;
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: 0.9fr 1.1fr;
     gap:6vw;
-    align-items:start;
+    align-items:center;
+  }
+  .story-photo{
+    margin:0;
+    border-radius:3px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    aspect-ratio: 4 / 3;
+  }
+  .story-photo img{
+    width:100%;height:100%;object-fit:cover;display:block;
   }
   .story blockquote{
     margin:0;
@@ -498,6 +513,22 @@
     color:#F6F1E6;
     background:linear-gradient(to top, rgba(15,20,24,0.78), rgba(15,20,24,0));
     text-align:left;
+  }
+  .multi-badge{
+    position:absolute; top:8px; right:8px;
+    display:flex; align-items:center; gap:4px;
+    padding:4px 8px 4px 6px;
+    border-radius:20px;
+    background:rgba(15,20,24,0.55);
+    color:#F6F1E6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.7rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .multi-badge svg{
+    width:13px; height:13px;
+    fill:none; stroke:currentColor; stroke-width:1.8;
+    stroke-linecap:round; stroke-linejoin:round;
   }
 
   /* ---------- lightbox ---------- */
@@ -735,6 +766,26 @@
     color:var(--sea);
     margin-bottom:4px;
   }
+  .loc-photo{
+    position:relative;
+    margin-top:10px;
+    overflow:hidden;
+    background:var(--paper);
+  }
+  .loc-photo img{
+    display:block; width:100%; height:300px; object-fit:cover;
+  }
+  .loc-photo figcaption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:10px 18px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size:0.72rem;
+    color:#F6F1E6;
+    background:linear-gradient(to top, rgba(15,20,24,0.72), rgba(15,20,24,0));
+    opacity:0;
+    transition:opacity .2s ease;
+  }
+  .loc-photo:hover figcaption, .loc-photo:focus-within figcaption{opacity:1;}
   .map-note{
     margin:0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -760,21 +811,36 @@
     margin-top:24px;
     background:var(--sand-deep);
     border:1px solid var(--line);
-    padding:12px 18px;
+    padding:16px 18px;
     border-radius:3px;
-    display:flex;
-    flex-wrap:wrap;
-    align-items:baseline;
-    gap:5px 10px;
   }
   .rules-note-label{
+    display:block;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     font-size:0.68rem;
     letter-spacing:0.13em;
     text-transform:uppercase;
     color:var(--roof);
     font-weight:700;
+    margin-bottom:12px;
+  }
+  .rule-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 24px;
+    margin-bottom:10px;
+  }
+  .rule-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-size:0.86rem;
+    color:var(--ink);
+  }
+  .rule-chip svg{
+    width:22px;height:22px;
     flex:0 0 auto;
+    fill:none;stroke:var(--roof);color:var(--roof);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
   }
   .rules-note p{margin:0; color:var(--ink-soft); font-size:0.86rem;}
 
@@ -1019,10 +1085,15 @@
 
   <section id="story">
     <div class="story reveal">
-      <blockquote data-i18n="story_quote">&ldquo;Een mooi, karaktervol huis, vlak in het centrum.&rdquo;</blockquote>
-      <div class="body">
-        <p data-i18n="story_p1">Strenge bouwregels en de bescherming van de duinen hebben het dorp laag gehouden. Dat voel je nog steeds zodra je de rustige, groene straten in wandelt. Vijf minuten later sta je met je tenen in het zand. Het terras is dankzij de duin vaak windvrij, het soort plek waar het ontbijt ongemerkt overgaat in de lunch. Er is ruimte voor het hele gezin, van opa en oma tot de kleinkinderen.</p>
-        <p data-i18n="story_p2">Beneden vind je een landelijke keuken met een eettafel voor 6 personen en een living voor rustige avonden. Boven liggen drie slaapkamers, &eacute;&eacute;n met eigen badkamer en &eacute;&eacute;n met een stapelbed voor de kleinkinderen, plus een tweede volledige badkamer.</p>
+      <figure class="story-photo">
+        <img loading="lazy" width="1600" height="1200" src="/images/living-room-2.jpg" alt="Living gezien vanaf de zetel, met zicht op de eettafel door de gewelfde doorgang." data-i18n-alt="story_photo_alt">
+      </figure>
+      <div class="story-text">
+        <blockquote data-i18n="story_quote">&ldquo;Een mooi, karaktervol huis, vlak in het centrum.&rdquo;</blockquote>
+        <div class="body">
+          <p data-i18n="story_p1">Strenge bouwregels en de bescherming van de duinen hebben het dorp laag gehouden. Dat voel je nog steeds zodra je de rustige, groene straten in wandelt. Vijf minuten later sta je met je tenen in het zand. Het terras is dankzij de duin vaak windvrij, het soort plek waar het ontbijt ongemerkt overgaat in de lunch. Er is ruimte voor het hele gezin, van opa en oma tot de kleinkinderen.</p>
+          <p data-i18n="story_p2">Beneden vind je een landelijke keuken met een eettafel voor 6 personen en een living voor rustige avonden. Boven liggen drie slaapkamers, &eacute;&eacute;n met eigen badkamer en &eacute;&eacute;n met een stapelbed voor de kleinkinderen, plus een tweede volledige badkamer.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1035,10 +1106,10 @@
       </div>
     </div>
     <div class="gallery" id="gallerGrid">
-      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/living-room.jpg" alt="Living met twee zetels, fauteuils en een houten salontafel." data-i18n-alt="gal_living_alt"><span class="cap sans" data-i18n="gal_living_cap">Living</span></button></figure>
-      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/kitchen.jpg" alt="Landelijke keuken en eettafel, met crèmekleurige kasten en een gewelfde tuindeur." data-i18n-alt="gal_kitchen_alt"><span class="cap sans" data-i18n="gal_kitchen_cap">Keuken &amp; eethoek</span></button></figure>
-      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/terrace.jpg" alt="Bestraat terras met eettafel, stoelen en een parasol." data-i18n-alt="gal_terrace_alt"><span class="cap sans" data-i18n="gal_terrace_cap">Terras</span></button></figure>
-      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bedroom1-ensuite.jpg" alt="Slaapkamer 1, met een inbouwkast en een deur naar de eigen badkamer." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Slaapkamer 1 &middot; eigen badkamer</span></button></figure>
+      <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn" data-extra='[{"src":"/images/living-room-2.jpg","alt":"Living gezien vanaf de zetel, met zicht op de eettafel door de gewelfde doorgang."}]'><img loading="lazy" width="1100" height="825" src="/images/living-room.jpg" alt="Living met twee zetels, fauteuils en een houten salontafel." data-i18n-alt="gal_living_alt"><span class="cap sans" data-i18n="gal_living_cap">Living</span><span class="multi-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg><span>2</span></span></button></figure>
+      <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn" data-extra='[{"src":"/images/kitchen-2.jpg","alt":"Keuken en eethoek gezien vanaf de andere kant, met zicht op de gewelfde tuindeur."}]'><img loading="lazy" width="1100" height="825" src="/images/kitchen.jpg" alt="Landelijke keuken en eettafel, met crèmekleurige kasten en een gewelfde tuindeur." data-i18n-alt="gal_kitchen_alt"><span class="cap sans" data-i18n="gal_kitchen_cap">Keuken &amp; eethoek</span><span class="multi-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg><span>2</span></span></button></figure>
+      <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn" data-extra='[{"src":"/images/terrace-2.jpg","alt":"Overzicht van het terras en de witte gevel, met parasol en tuinstoelen."},{"src":"/images/terrace-3.jpg","alt":"Close-up van het gewelfde raam en het terras met eettafel."}]'><img loading="lazy" width="1100" height="825" src="/images/terrace.jpg" alt="Bestraat terras met eettafel, stoelen en een parasol." data-i18n-alt="gal_terrace_alt"><span class="cap sans" data-i18n="gal_terrace_cap">Terras</span><span class="multi-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg><span>3</span></span></button></figure>
+      <figure class="reveal" style="--d:3"><button type="button" class="gallery-btn" data-extra='[{"src":"/images/bedroom1-2.jpg","alt":"Slaapkamer 1, close-up van de twee bedden met kussens en nachtlampjes."}]'><img loading="lazy" width="1100" height="825" src="/images/bedroom1-ensuite.jpg" alt="Slaapkamer 1, met een inbouwkast en een deur naar de eigen badkamer." data-i18n-alt="gal_bedroom1_alt"><span class="cap sans" data-i18n="gal_bedroom1_cap">Slaapkamer 1 &middot; eigen badkamer</span><span class="multi-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg><span>2</span></span></button></figure>
       <figure class="reveal" style="--d:0"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/ensuite-bathroom.jpg" alt="Eigen badkamer met een gebogen glazen douchecabine." data-i18n-alt="gal_ensuite_alt"><span class="cap sans" data-i18n="gal_ensuite_cap">Eigen badkamer</span></button></figure>
       <figure class="reveal" style="--d:1"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bedroom2.jpg" alt="Slaapkamer 2, met twee bedden tegen elkaar onder een hellend dakraam." data-i18n-alt="gal_bedroom2_alt"><span class="cap sans" data-i18n="gal_bedroom2_cap">Slaapkamer 2</span></button></figure>
       <figure class="reveal" style="--d:2"><button type="button" class="gallery-btn"><img loading="lazy" width="1100" height="825" src="/images/bedroom3-bunks.jpg" alt="Slaapkamer 3, een kinderkamer met een houten stapelbed." data-i18n-alt="gal_bunk_alt"><span class="cap sans" data-i18n="gal_bunk_cap">Kinderkamer &middot; stapelbed</span></button></figure>
@@ -1068,24 +1139,40 @@
         <span data-i18n="fac_parking">Parking voor 1 wagen</span>
       </div>
       <div class="facility">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3.5" width="18" height="17" rx="1.5"/><rect x="5.5" y="6" width="13" height="8" rx="1"/><circle cx="7" cy="17.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="11" cy="17.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="15" cy="17.5" r="0.9" fill="currentColor" stroke="none"/></svg>
+        <span data-i18n="fac_oven">Oven</span>
+      </div>
+      <div class="facility">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1.5"/><circle cx="8" cy="8.5" r="2.3"/><circle cx="16" cy="8.5" r="2.3"/><circle cx="8" cy="15.5" r="2.3"/><circle cx="16" cy="15.5" r="2.3"/></svg>
+        <span data-i18n="fac_hob">Gasfornuis</span>
+      </div>
+      <div class="facility">
         <svg viewBox="0 0 24 24"><rect x="3.5" y="3" width="17" height="18" rx="1.5"/><circle cx="12" cy="13" r="5.2"/><circle cx="12" cy="13" r="1.6" fill="currentColor" stroke="none"/><path d="M7 6.2h1M10 6.2h1"/></svg>
         <span data-i18n="fac_dishwasher">Vaatwasser</span>
+      </div>
+      <div class="facility">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M4.5 6l15 12M19.5 6l-15 12"/></svg>
+        <span data-i18n="fac_freezer">Diepvries</span>
       </div>
       <div class="facility">
         <svg viewBox="0 0 24 24"><rect x="3.5" y="3" width="17" height="18" rx="1.5"/><circle cx="12" cy="14" r="5"/><path d="M12 14l2.4-2.4"/><circle cx="7" cy="6" r="0.6" fill="currentColor" stroke="none"/><circle cx="9.5" cy="6" r="0.6" fill="currentColor" stroke="none"/></svg>
         <span data-i18n="fac_washer">Wasmachine</span>
       </div>
       <div class="facility">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="1.5"/><path d="M7 5v12M11 5v12M15 5v12M19 5v12"/></svg>
+        <span data-i18n="fac_heating">Centrale verwarming</span>
+      </div>
+      <div class="facility">
         <svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="12.5" rx="1.5"/><path d="M8 21h8M12 17.5V21"/></svg>
-        <span data-i18n="fac_tv">Tv in de living</span>
+        <span data-i18n="fac_tv">TV met digitale zenders</span>
       </div>
       <div class="facility">
         <svg viewBox="0 0 24 24"><path d="M12 3c4 1 7 4.5 7 8.5H5C5 7.5 8 4 12 3z"/><path d="M12 3v1.2M12 11.5V21"/></svg>
         <span data-i18n="fac_terrace">40m&sup2; priv&eacute;terras</span>
       </div>
       <div class="facility">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.5 18.5l13-13"/></svg>
-        <span data-i18n="fac_smoking">Rookvrij huis</span>
+        <svg viewBox="0 0 24 24"><rect x="7" y="3" width="7" height="5" rx="1"/><path d="M5 8h13a1.5 1.5 0 0 1 1.5 1.7c-.6 5.6-4.4 10-7.5 10s-6.9-4.4-7.5-10A1.5 1.5 0 0 1 5 8z"/></svg>
+        <span data-i18n="fac_toilets">2 aparte toiletten</span>
       </div>
     </div>
 
@@ -1127,6 +1214,10 @@
           <div class="map-guard sans" tabindex="0" role="button" data-i18n="map_guard_label" aria-label="Klik om de kaart te activeren">Klik om de kaart te activeren</div>
           <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=3.0296%2C51.2737%2C3.0396%2C51.2777&amp;layer=mapnik&amp;marker=51.2757%2C3.0346" loading="lazy" title="Ons Nest, Orteliuslaan 8, De Haan" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+        <figure class="loc-photo">
+          <img loading="lazy" width="1200" height="800" src="/images/de-haan-skyline.jpg" alt="De Haan aan Zee bij zonsondergang, met de karakteristieke belle-&eacute;poquegevels aan de zeedijk." data-i18n-alt="loc_photo_alt">
+          <figcaption class="sans" data-i18n="loc_photo_caption">De Haan aan Zee. Foto: Laura Paredis (Pexels)</figcaption>
+        </figure>
         <div class="map-foot">
           <div>
             <span class="map-label sans" data-i18n="location_map_caption">Ligging</span>
@@ -1161,8 +1252,11 @@
     </div>
     <div class="rules-note reveal">
       <span class="rules-note-label sans" data-i18n="house_notes_h3">Huisregels</span>
-      <p class="sans" data-i18n="house_notes_p1">Geen huisdieren en geen jongerengroepen. Dit is een rustige, goed onderhouden gezinswoning.</p>
-      <p class="sans" data-i18n="house_notes_p2">Overal rookvrij. Hou rekening met de buren.</p>
+      <div class="rule-chips">
+        <span class="rule-chip sans"><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(3.6 3.6) scale(0.7)"><path d="M11.25 16.25h1.5L12 17z"/><path d="M16 14v.5"/><path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309"/><path d="M8 14v.5"/><path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5"/></g><circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/></svg><span data-i18n="house_notes_nopets">Geen huisdieren</span></span>
+        <span class="rule-chip sans"><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(3.6 3.6) scale(0.7)"><path d="M12 12H3a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h13"/><path d="M18 8c0-2.5-2-2.5-2-5"/><path d="M21 12a1 1 0 0 1 1 1v2a1 1 0 0 1-.5.866"/><path d="M22 8c0-2.5-2-2.5-2-5"/><path d="M7 12v4"/></g><circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/></svg><span data-i18n="house_notes_nosmoking">Rookvrij</span></span>
+      </div>
+      <p class="sans" data-i18n="house_notes_p1">Geen jongerengroepen. Dit is een rustige, goed onderhouden gezinswoning. Hou rekening met de buren.</p>
     </div>
   </section>
 
@@ -1347,12 +1441,26 @@
   /* lightbox gallery */
   var triggers = Array.prototype.slice.call(document.querySelectorAll(".gallery-btn"));
   if(triggers.length){
-    /* read live from the DOM (not a cached snapshot) so captions/alt stay correct after a language switch */
-    function photoAt(idx){
-      var btn = triggers[idx];
-      var img = btn.querySelector("img");
-      var cap = btn.querySelector(".cap");
-      return {src: img.src, alt: img.alt, caption: cap ? cap.textContent : ""};
+    /* read live from the DOM (not a cached snapshot) so captions/alt stay correct after a language switch.
+       Each trigger contributes its main photo plus any data-extra photos (shown only in the lightbox,
+       not as separate grid tiles) as consecutive slides, so prev/next flows naturally through a room's set. */
+    function buildSlides(){
+      var slides = [];
+      var starts = [];
+      triggers.forEach(function(btn){
+        starts.push(slides.length);
+        var img = btn.querySelector("img");
+        var cap = btn.querySelector(".cap");
+        var capText = cap ? cap.textContent : "";
+        slides.push({src: img.src, alt: img.alt, caption: capText});
+        var extraRaw = btn.getAttribute("data-extra");
+        if(extraRaw){
+          JSON.parse(extraRaw).forEach(function(e){
+            slides.push({src: e.src, alt: e.alt, caption: capText});
+          });
+        }
+      });
+      return {slides: slides, starts: starts};
     }
 
     var lb = document.getElementById("lightbox");
@@ -1363,17 +1471,19 @@
     var lbPrev = document.getElementById("lbPrev");
     var lbNext = document.getElementById("lbNext");
     var current = 0;
+    var slidesData = null;
     var lastFocused = null;
 
     function render(){
-      var p = photoAt(current);
+      var p = slidesData.slides[current];
       lbImg.src = p.src;
       lbImg.alt = p.alt;
       lbCaption.textContent = p.caption;
-      lbCounter.textContent = (current + 1) + " / " + triggers.length;
+      lbCounter.textContent = (current + 1) + " / " + slidesData.slides.length;
     }
 
     function openLightbox(idx){
+      slidesData = buildSlides();
       current = idx;
       lastFocused = document.activeElement;
       render();
@@ -1392,8 +1502,8 @@
       if(lastFocused && typeof lastFocused.focus === "function") lastFocused.focus({ preventScroll: true });
     }
 
-    function showNext(){ current = (current + 1) % triggers.length; render(); }
-    function showPrev(){ current = (current - 1 + triggers.length) % triggers.length; render(); }
+    function showNext(){ current = (current + 1) % slidesData.slides.length; render(); }
+    function showPrev(){ current = (current - 1 + slidesData.slides.length) % slidesData.slides.length; render(); }
 
     function onKeydown(e){
       if(e.key === "Escape"){ closeLightbox(); }
@@ -1412,7 +1522,7 @@
     }
 
     triggers.forEach(function(btn, idx){
-      btn.addEventListener("click", function(){ openLightbox(idx); });
+      btn.addEventListener("click", function(){ openLightbox(buildSlides().starts[idx]); });
     });
     lbClose.addEventListener("click", closeLightbox);
     lbNext.addEventListener("click", showNext);
